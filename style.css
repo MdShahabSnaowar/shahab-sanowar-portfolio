@@ -1,0 +1,9589 @@
+/* =========================================================
+   SHAHAB SANOWAR — PORTFOLIO
+   CLEAN MASTER CSS
+   ========================================================= */
+
+
+/* =========================================================
+   1. RESET
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    min-height: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: #000;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+
+    margin: 0;
+    padding: 0;
+
+    background: #000;
+    color: #fff;
+
+    font-family:
+        "Inter",
+        Arial,
+        sans-serif;
+
+    overflow-x: hidden;
+    overflow-y: visible;
+
+    overscroll-behavior: auto;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* =========================================================
+   2. APP
+   ========================================================= */
+
+#app {
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    overflow: visible;
+}
+
+
+/* =========================================================
+   3. CLI INTRO
+   ========================================================= */
+
+.cli-page {
+    position: fixed;
+
+    inset: 0;
+
+    width: 100vw;
+    height: 100vh;
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #000;
+
+    overflow: hidden;
+
+    z-index: 9999;
+
+    opacity: 1;
+    visibility: visible;
+
+    transform: scale(1);
+
+    transition:
+        opacity 0.7s ease,
+        visibility 0.7s ease,
+        transform 0.8s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
+}
+
+.cli-page.hide {
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform: scale(1.035);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   4. TERMINAL
+   ========================================================= */
+
+.terminal {
+    position: relative;
+
+    width: min(820px, 78vw);
+
+    background: #0b0d15;
+
+    border: 1px solid #20283a;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 0 55px
+        rgba(0, 255, 207, 0.07),
+
+        0 0 120px
+        rgba(0, 255, 207, 0.025);
+}
+
+
+/* =========================================================
+   5. TERMINAL BAR
+   ========================================================= */
+
+.terminal-bar {
+    height: 43px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 0 15px;
+
+    gap: 9px;
+
+    background: #151827;
+
+    border-bottom: 1px solid #252b3c;
+}
+
+
+/* =========================================================
+   6. MAC DOTS
+   ========================================================= */
+
+.dot {
+    width: 12px;
+    height: 12px;
+
+    display: block;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+}
+
+.red {
+    background: #ff5f57;
+}
+
+.yellow {
+    background: #febc2e;
+}
+
+.green {
+    background: #28c840;
+}
+
+
+/* =========================================================
+   7. TERMINAL TITLE
+   ========================================================= */
+
+.terminal-title {
+    margin-left: 12px;
+
+    color: #78819b;
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   8. TERMINAL BODY
+   ========================================================= */
+
+.terminal-body {
+    position: relative;
+
+    height: 360px;
+
+    padding: 38px 34px;
+
+    overflow: hidden;
+
+    color: #e8edf7;
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 16px;
+
+    font-weight: 500;
+
+    line-height: 2;
+}
+
+
+/* =========================================================
+   9. TERMINAL LINES
+   ========================================================= */
+
+.line {
+    position: relative;
+
+    display: block;
+
+    min-height: 32px;
+
+    margin: 0;
+    padding: 0;
+
+    white-space: pre;
+
+    opacity: 0;
+
+    transform: translateX(-8px);
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+}
+
+.line.show {
+    opacity: 1;
+
+    transform: translateX(0);
+}
+
+
+/* =========================================================
+   10. TERMINAL COLORS
+   ========================================================= */
+
+.prompt {
+    color: #00d7ff;
+
+    font-weight: 500;
+}
+
+.typed-text {
+    color: #e8edf7;
+}
+
+.compiling {
+    color: #e8c15a;
+}
+
+.url {
+    color: #00d7ff;
+}
+
+
+/* =========================================================
+   11. TYPING CURSOR
+   ========================================================= */
+
+.typing-cursor {
+    display: inline-block;
+
+    width: 8px;
+    height: 1em;
+
+    margin-left: 3px;
+
+    padding: 0;
+
+    background: #15d7c5;
+
+    vertical-align: -0.15em;
+
+    line-height: 1;
+
+    border-radius: 0;
+
+    animation:
+        terminalCursorBlink
+        0.8s
+        steps(1)
+        infinite;
+}
+
+@keyframes terminalCursorBlink {
+
+    0%,
+    49% {
+        opacity: 1;
+    }
+
+    50%,
+    100% {
+        opacity: 0;
+    }
+}
+
+
+/* Old compatibility cursor */
+
+.terminal-cursor {
+    display: none !important;
+}
+
+
+/* =========================================================
+   12. LAUNCHING TEXT
+   ========================================================= */
+
+.launching {
+    position: absolute;
+
+    left: 50%;
+    bottom: 13%;
+
+    transform: translateX(-50%);
+
+    color: #65738c;
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    line-height: 1;
+
+    letter-spacing: 0.3px;
+
+    white-space: nowrap;
+}
+
+.launching span,
+.launching b {
+    color: #18d7c3;
+}
+
+
+/* =========================================================
+   13. HERO
+   ========================================================= */
+
+.hero-page {
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+    min-height: 100vh;
+
+    background: #000;
+
+    /*
+       IMPORTANT:
+       Visible overflow allows the robot to cross
+       the Hero → About boundary.
+    */
+    overflow: visible;
+
+    z-index: 10;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: scale(1.025);
+
+    transition:
+        opacity 0.8s ease,
+        visibility 0.8s ease,
+        transform 1s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
+}
+
+.hero-page.visible {
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: scale(1);
+}
+
+
+/* =========================================================
+   14. HERO STARS
+   ========================================================= */
+
+.hero-page .stars {
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+
+        radial-gradient(
+            circle at 10% 20%,
+            #fff 0 1px,
+            transparent 1.5px
+        ),
+
+        radial-gradient(
+            circle at 25% 75%,
+            #7efcff 0 1px,
+            transparent 1.5px
+        ),
+
+        radial-gradient(
+            circle at 50% 22%,
+            #fff 0 1px,
+            transparent 1.5px
+        ),
+
+        radial-gradient(
+            circle at 73% 30%,
+            #fff 0 1px,
+            transparent 1.5px
+        ),
+
+        radial-gradient(
+            circle at 89% 66%,
+            #b9ffff 0 1px,
+            transparent 1.5px
+        ),
+
+        radial-gradient(
+            circle at 64% 83%,
+            #fff 0 1px,
+            transparent 1.5px
+        ),
+
+        radial-gradient(
+            circle at 38% 55%,
+            #fff 0 1px,
+            transparent 1.5px
+        );
+
+    background-size:
+
+        240px 210px,
+        310px 270px,
+        390px 320px,
+        330px 290px,
+        420px 360px,
+        270px 250px,
+        350px 300px;
+
+    opacity: 0.75;
+
+    pointer-events: none;
+
+    z-index: 0;
+
+    animation:
+        heroStarsDrift 18s ease-in-out infinite alternate,
+        heroStarsBlink 5.5s ease-in-out infinite;
+}
+
+@keyframes heroStarsDrift {
+    0%   { transform: translate3d(0, 0, 0); }
+    50%  { transform: translate3d(3px, -2px, 0); }
+    100% { transform: translate3d(-3px, 2px, 0); }
+}
+
+@keyframes heroStarsBlink {
+    0%, 100% { opacity: 0.58; }
+    35%      { opacity: 0.78; }
+    60%      { opacity: 0.64; }
+    78%      { opacity: 0.82; }
+}
+
+
+
+/* =========================================================
+   15. HERO GLOWS
+   ========================================================= */
+
+.hero-page .glow {
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(75px);
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+.glow-left {
+    width: 470px;
+    height: 420px;
+
+    left: -100px;
+    top: 130px;
+
+    background:
+        rgba(
+            0,
+            190,
+            170,
+            0.18
+        );
+}
+
+.glow-right {
+    width: 520px;
+    height: 520px;
+
+    right: 80px;
+    top: 150px;
+
+    background:
+        rgba(
+            0,
+            190,
+            170,
+            0.13
+        );
+}
+
+
+/* =========================================================
+   16. NAVIGATION
+   ========================================================= */
+
+.nav {
+    position: relative;
+
+    z-index: 100;
+
+    width: min(1280px, 90%);
+
+    height: 78px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+/* Brand */
+
+.brand {
+    color: #fff;
+
+    font-size: 21px;
+
+    font-weight: 800;
+
+    white-space: nowrap;
+}
+
+.brand span {
+    color: #15e3c1;
+}
+
+
+/* Navigation */
+
+.nav nav {
+    display: flex;
+
+    align-items: center;
+
+    gap: 38px;
+}
+
+.nav nav a {
+    color: #c9d0da;
+
+    font-size: 13px;
+
+    font-weight: 400;
+
+    transition:
+        color 0.2s ease;
+}
+
+.nav nav a:hover {
+    color: #18e2c3;
+}
+
+
+/* Let's Talk */
+
+.talk {
+    display: inline-flex;
+
+    align-items: center;
+
+    border: 1px solid #29323a;
+
+    border-radius: 28px;
+
+    padding: 12px 18px;
+
+    background: #0d1217;
+
+    color: #fff;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+.talk:hover {
+    border-color: #16e3c2;
+
+    background: #101a1d;
+}
+
+.talk i {
+    width: 8px;
+    height: 8px;
+
+    display: inline-block;
+
+    margin-right: 8px;
+
+    border-radius: 50%;
+
+    background: #16e3c2;
+
+    box-shadow:
+        0 0 12px #16e3c2;
+}
+
+
+/* =========================================================
+   17. HERO CONTENT
+   ========================================================= */
+
+.hero-content {
+    position: relative;
+
+    z-index: 20;
+
+    width: min(1120px, 86%);
+
+    height:
+        calc(
+            100vh - 78px
+        );
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    align-items: center;
+
+    overflow: visible;
+}
+
+
+/* =========================================================
+   18. HERO COPY
+   ========================================================= */
+
+.copy {
+    position: relative;
+
+    z-index: 40;
+
+    padding-bottom: 45px;
+}
+
+
+/* Role */
+
+.role {
+    margin-bottom: 14px;
+
+    color: #fff;
+
+    font-size: 27px;
+
+    font-weight: 700;
+
+    line-height: 1.2;
+}
+
+.typing-caret {
+    display: inline-block;
+
+    margin-left: 5px;
+
+    color: #16e0d0;
+
+    font-weight: 400;
+
+    text-shadow:
+        0 0 8px
+        rgba(22, 224, 208, 0.8),
+
+        0 0 18px
+        rgba(22, 224, 208, 0.35);
+
+    animation:
+        caretBlink
+        0.75s
+        steps(1)
+        infinite;
+}
+
+@keyframes caretBlink {
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
+}
+
+
+/* Hello */
+
+.hello {
+    margin-bottom: 3px;
+
+    color: #12e1c2;
+
+    font-size: 28px;
+
+    font-weight: 700;
+
+    line-height: 1.2;
+}
+
+
+/* Name */
+
+.copy h1 {
+    margin: 0 0 20px;
+
+    color: #fff;
+
+    font-size: 58px;
+
+    font-weight: 800;
+
+    line-height: 1.02;
+
+    letter-spacing: -2.8px;
+}
+
+
+/* Description */
+
+.copy p {
+    max-width: 570px;
+
+    margin: 0 0 28px;
+
+    color: #bdc6d0;
+
+    font-size: 16px;
+
+    font-weight: 400;
+
+    line-height: 1.65;
+}
+
+.copy strong {
+    color: #fff;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   19. HERO BUTTONS
+   ========================================================= */
+
+.buttons {
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+}
+
+.btn {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 13px 23px;
+
+    border-radius: 28px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    line-height: 1;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+
+/* Primary */
+
+.primary {
+    background:
+        linear-gradient(
+            100deg,
+            #08bdf0,
+            #27df75
+        );
+
+    color: #00110e;
+
+    box-shadow:
+        0 0 20px
+        rgba(
+            20,
+            220,
+            190,
+            0.12
+        );
+}
+
+
+/* Resume */
+
+.resume {
+    background: #fff;
+
+    color: #101215;
+}
+
+
+/* =========================================================
+   20. SOCIAL LINKS
+   ========================================================= */
+
+.socials {
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: 26px;
+}
+
+.socials a {
+    width: 40px;
+    height: 40px;
+
+    display: grid;
+
+    place-items: center;
+
+    border: 1px solid #252e35;
+
+    border-radius: 11px;
+
+    background: #0b1014;
+
+    color: #dce2e7;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    transition:
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.social-icon {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.social-icon svg {
+    width: 20px;
+    height: 20px;
+
+    fill: currentColor;
+}
+
+.socials a:hover {
+    border-color: #16e3c2;
+
+    color: #16e3c2;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   21. ROBOT STAGE
+   ========================================================= */
+
+.robot-stage {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: visible;
+
+    isolation: isolate;
+
+    z-index: 50;
+}
+
+
+/* =========================================================
+   22. ROBOT GLOW
+   ========================================================= */
+
+.robot-back-glow {
+    position: absolute;
+
+    width: 620px;
+    height: 620px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+
+            rgba(
+                0,
+                220,
+                200,
+                0.20
+            ) 0%,
+
+            rgba(
+                0,
+                180,
+                170,
+                0.11
+            ) 32%,
+
+            rgba(
+                0,
+                120,
+                120,
+                0.05
+            ) 55%,
+
+            transparent 74%
+        );
+
+    filter: blur(28px);
+
+    z-index: 0;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   23. ROBOT
+   ========================================================= */
+
+.robot {
+    position: relative;
+
+    z-index: 10;
+
+    width: min(
+        570px,
+        46vw
+    );
+
+    max-width: none;
+
+    height: auto;
+
+    display: block;
+
+    object-fit: contain;
+
+    object-position: center;
+
+    mix-blend-mode: normal;
+
+    filter:
+        drop-shadow(
+            0 0 18px
+            rgba(
+                0,
+                240,
+                220,
+                0.18
+            )
+        )
+        drop-shadow(
+            0 0 45px
+            rgba(
+                0,
+                190,
+                180,
+                0.10
+            )
+        );
+
+    /*
+       IMPORTANT:
+       Robot intentionally extends downward
+       beyond Hero into About.
+    */
+
+            transform:
+        translate(20px, -80px)
+        scale(0.80);
+    animation:
+        robotFloat
+        4s
+        ease-in-out
+        infinite;
+}
+
+
+/* =========================================================
+   24. ROBOT FLOAT
+   ========================================================= */
+@keyframes robotFloat {
+    0%, 100% {
+        transform: translate(20px, -80px) scale(0.80);
+    }
+
+    50% {
+        transform: translate(20px, -90px) scale(0.80);
+    }
+}
+
+
+/* =========================================================
+   25. ROBOT ORBITS
+   ========================================================= */
+
+.robot-orbits {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 20;
+
+    pointer-events: none;
+}
+
+.robot-orbits .orbital {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 560px;
+    height: 230px;
+
+    border: 1px solid
+        rgba(
+            0,
+            210,
+            210,
+            0.35
+        );
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+/* Orbit 1 */
+
+.robot-orbits .orbital-1 {
+    transform:
+        translate(
+            -50%,
+            -50%
+        )
+        rotate(20deg);
+
+    animation:
+        orbitOne
+        10s
+        linear
+        infinite;
+}
+
+
+/* Orbit 2 */
+
+.robot-orbits .orbital-2 {
+    width: 500px;
+    height: 200px;
+
+    border-color:
+        rgba(
+            0,
+            150,
+            220,
+            0.25
+        );
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        )
+        rotate(-25deg);
+
+    animation:
+        orbitTwo
+        12s
+        linear
+        infinite;
+}
+
+
+/* =========================================================
+   26. ORBIT ANIMATIONS
+   ========================================================= */
+
+@keyframes orbitOne {
+
+    from {
+        transform:
+            translate(
+                -50%,
+                -50%
+            )
+            rotate(20deg);
+    }
+
+    to {
+        transform:
+            translate(
+                -50%,
+                -50%
+            )
+            rotate(380deg);
+    }
+}
+
+@keyframes orbitTwo {
+
+    from {
+        transform:
+            translate(
+                -50%,
+                -50%
+            )
+            rotate(-25deg);
+    }
+
+    to {
+        transform:
+            translate(
+                -50%,
+                -50%
+            )
+            rotate(335deg);
+    }
+}
+
+
+/* =========================================================
+   27. ROBOT SHADOW
+   ========================================================= */
+
+.robot-shadow {
+    position: absolute;
+
+    width: 260px;
+    height: 60px;
+
+    bottom: 19%;
+
+    border-radius: 50%;
+
+    background:
+        rgba(
+            0,
+            230,
+            200,
+            0.18
+        );
+
+    filter: blur(30px);
+
+    pointer-events: none;
+
+    z-index: 5;
+}
+
+
+/* =========================================================
+   28. FLOATING ORB
+   ========================================================= */
+
+.tiny-orb {
+    position: absolute;
+
+    right: 17%;
+    bottom: 28%;
+
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: #0ef1d1;
+
+    box-shadow:
+        0 0 16px #0ef1d1;
+
+    animation:
+        floatingOrb
+        3s
+        ease-in-out
+        infinite;
+
+    z-index: 30;
+}
+
+@keyframes floatingOrb {
+
+    0%,
+    100% {
+        transform:
+            translate(
+                0,
+                0
+            );
+    }
+
+    50% {
+        transform:
+            translate(
+                15px,
+                -20px
+            );
+    }
+}
+
+
+/* =========================================================
+   29. ABOUT PAGE
+   ========================================================= */
+
+.about-page {
+    position: relative;
+
+    /*
+       IMPORTANT:
+       Lower than Hero so the robot can visually
+       sit above this section.
+    */
+
+    z-index: 1;
+
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 70px 0 90px;
+
+    background:
+        radial-gradient(
+            ellipse 520px 460px at 12% 55%,
+            rgba(
+                0,
+                190,
+                175,
+                0.11
+            ),
+            transparent 68%
+        ),
+
+        radial-gradient(
+            ellipse 480px 480px at 88% 45%,
+            rgba(
+                0,
+                170,
+                190,
+                0.055
+            ),
+            transparent 70%
+        ),
+
+        linear-gradient(
+            to bottom,
+            #000 0%,
+            #000 35%,
+            #010807 100%
+        );
+
+    overflow: hidden;
+
+    isolation: isolate;
+}
+
+
+/* =========================================================
+   30. ABOUT TOP TRANSITION
+   ========================================================= */
+
+.about-page::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 180px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #000 0%,
+            rgba(0, 0, 0, 0) 100%
+        );
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+/* =========================================================
+   31. ABOUT STARS
+   ========================================================= */
+
+.about-page::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.30;
+
+    background-image:
+
+        radial-gradient(
+            circle at 8% 18%,
+            rgba(
+                255,
+                255,
+                255,
+                0.8
+            ) 0 1px,
+            transparent 1.5px
+        ),
+
+        radial-gradient(
+            circle at 19% 72%,
+            rgba(
+                126,
+                252,
+                255,
+                0.65
+            ) 0 1px,
+            transparent 1.5px
+        ),
+
+        radial-gradient(
+            circle at 37% 25%,
+            rgba(
+                255,
+                255,
+                255,
+                0.7
+            ) 0 1px,
+            transparent 1.5px
+        ),
+
+        radial-gradient(
+            circle at 54% 78%,
+            rgba(
+                255,
+                255,
+                255,
+                0.6
+            ) 0 1px,
+            transparent 1.5px
+        ),
+
+        radial-gradient(
+            circle at 71% 19%,
+            rgba(
+                185,
+                255,
+                255,
+                0.7
+            ) 0 1px,
+            transparent 1.5px
+        ),
+
+        radial-gradient(
+            circle at 91% 63%,
+            rgba(
+                255,
+                255,
+                255,
+                0.65
+            ) 0 1px,
+            transparent 1.5px
+        );
+
+    background-size:
+
+        250px 230px,
+        320px 280px,
+        380px 320px,
+        300px 270px,
+        430px 350px,
+        360px 310px;
+
+    z-index: 0;
+
+    animation:
+        aboutStarsDrift 22s ease-in-out infinite alternate,
+        aboutStarsBlink 7s ease-in-out infinite;
+}
+
+@keyframes aboutStarsDrift {
+    0%   { transform: translate3d(0, 0, 0); }
+    50%  { transform: translate3d(-3px, 2px, 0); }
+    100% { transform: translate3d(3px, -2px, 0); }
+}
+
+@keyframes aboutStarsBlink {
+    0%, 100% { opacity: 0.22; }
+    30%      { opacity: 0.34; }
+    55%      { opacity: 0.25; }
+    75%      { opacity: 0.38; }
+}
+
+
+
+/* =========================================================
+   32. ABOUT GLOWS
+   ========================================================= */
+
+.about-glow {
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(90px);
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+.about-glow-left {
+    width: 500px;
+    height: 430px;
+
+    left: -180px;
+    top: 35%;
+
+    background:
+        rgba(
+            0,
+            190,
+            175,
+            0.09
+        );
+}
+
+.about-glow-right {
+    width: 430px;
+    height: 430px;
+
+    right: -180px;
+    top: 20%;
+
+    background:
+        rgba(
+            0,
+            180,
+            190,
+            0.055
+        );
+}
+
+
+/* =========================================================
+   33. ABOUT CONTAINER
+   ========================================================= */
+
+.about-container {
+    position: relative;
+
+    z-index: 5;
+
+    width: min(
+        1120px,
+        88%
+    );
+
+    min-height: 560px;
+
+    display: grid;
+
+    grid-template-columns:
+        0.95fr
+        1.05fr;
+
+    align-items: center;
+
+    gap: 80px;
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   34. PROFILE VISUAL
+   ========================================================= */
+
+.profile-visual {
+    position: relative;
+
+    width: 100%;
+    height: 460px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* =========================================================
+   35. PROFILE HALO
+   ========================================================= */
+
+.profile-halo {
+    position: absolute;
+
+    width: 390px;
+    height: 390px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+
+            rgba(
+                0,
+                225,
+                205,
+                0.13
+            ) 0%,
+
+            rgba(
+                0,
+                190,
+                180,
+                0.07
+            ) 32%,
+
+            rgba(
+                0,
+                120,
+                125,
+                0.025
+            ) 55%,
+
+            transparent 73%
+        );
+
+    filter: blur(20px);
+
+    animation:
+        profileHaloPulse
+        4s
+        ease-in-out
+        infinite;
+
+    pointer-events: none;
+}
+
+@keyframes profileHaloPulse {
+
+    0%,
+    100% {
+        transform: scale(0.95);
+
+        opacity: 0.75;
+    }
+
+    50% {
+        transform: scale(1.05);
+
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   36. PROFILE IMAGE
+   ========================================================= */
+
+.profile-image-wrap {
+    position: relative;
+
+    width: 270px;
+    height: 270px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    padding: 4px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #12e1c2,
+            #087b91 48%,
+            #152229
+        );
+
+    box-shadow:
+
+        0 0 0 1px
+        rgba(
+            22,
+            227,
+            198,
+            0.18
+        ),
+
+        0 0 28px
+        rgba(
+            0,
+            220,
+            200,
+            0.13
+        ),
+
+        0 0 75px
+        rgba(
+            0,
+            180,
+            180,
+            0.07
+        );
+
+    z-index: 5;
+
+    animation:
+        profileFloat
+        5s
+        ease-in-out
+        infinite;
+}
+
+.profile-image-wrap::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -12px;
+
+    border-radius: 50%;
+
+    border: 1px solid
+        rgba(
+            20,
+            225,
+            200,
+            0.25
+        );
+
+    box-shadow:
+        0 0 15px
+        rgba(
+            20,
+            225,
+            200,
+            0.08
+        );
+
+    animation:
+        profileRing
+        8s
+        linear
+        infinite;
+
+    pointer-events: none;
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    border-radius: 50%;
+
+    display: block;
+
+    border: 4px solid #05090c;
+}
+
+@keyframes profileFloat {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-10px);
+    }
+}
+
+@keyframes profileRing {
+
+    0% {
+        transform:
+            rotate(0deg);
+
+        opacity: 0.35;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+
+    100% {
+        transform:
+            rotate(360deg);
+
+        opacity: 0.35;
+    }
+}
+
+
+/* =========================================================
+   37. TECH ORBIT ICONS
+   ========================================================= */
+
+.tech-orbit {
+    position: absolute;
+
+    width: 34px;
+    height: 34px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: #0b1218;
+
+    border: 1px solid #263640;
+
+    color: #d7e4e8;
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 0 15px
+        rgba(
+            0,
+            220,
+            200,
+            0.08
+        );
+
+    z-index: 8;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease;
+}
+
+.tech-orbit:hover {
+    border-color: #15e3c1;
+
+    color: #15e3c1;
+
+    transform: scale(1.15);
+}
+
+
+/* Tech positions */
+
+.tech-orbit-1 {
+    top: 80px;
+    left: 28%;
+}
+
+.tech-orbit-2 {
+    top: 135px;
+    right: 15%;
+}
+
+.tech-orbit-3 {
+    top: 42%;
+    left: 7%;
+}
+
+.tech-orbit-4 {
+    bottom: 25%;
+    left: 12%;
+}
+
+.tech-orbit-5 {
+    bottom: 13%;
+    right: 22%;
+}
+
+.tech-orbit-6 {
+    top: 25%;
+    right: 3%;
+}
+
+
+/* =========================================================
+   38. ABOUT COPY
+   ========================================================= */
+
+.about-copy {
+    position: relative;
+
+    max-width: 560px;
+
+    z-index: 5;
+}
+
+
+/* Label */
+
+.about-label {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 18px;
+
+    color: #15e3c1;
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    letter-spacing: 2.5px;
+}
+
+.about-label span {
+    width: 30px;
+    height: 1px;
+
+    display: block;
+
+    background: #15e3c1;
+
+    box-shadow:
+        0 0 9px
+        rgba(
+            21,
+            227,
+            193,
+            0.7
+        );
+}
+
+
+/* Heading */
+
+.about-copy h2 {
+    margin: 0 0 7px;
+
+    color: #fff;
+
+    font-size: 48px;
+
+    font-weight: 800;
+
+    line-height: 1.05;
+
+    letter-spacing: -2.5px;
+}
+
+.about-copy h3 {
+    margin: 0 0 25px;
+
+    color: #12ddc1;
+
+    font-size: 20px;
+
+    font-weight: 600;
+
+    line-height: 1.2;
+}
+
+
+/* Paragraph */
+
+.about-copy p {
+    max-width: 540px;
+
+    margin: 0 0 14px;
+
+    color: #aeb8c1;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+.about-copy p strong {
+    color: #f0f4f5;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   39. ABOUT STATS
+   ========================================================= */
+
+.about-stats {
+    display: flex;
+
+    align-items: stretch;
+
+    gap: 10px;
+
+    margin-top: 27px;
+}
+
+.about-stat {
+    min-width: 118px;
+
+    padding: 14px 15px;
+
+    border: 1px solid
+        rgba(
+            38,
+            55,
+            62,
+            0.9
+        );
+
+    border-radius: 8px;
+
+    background:
+        rgba(
+            8,
+            15,
+            18,
+            0.72
+        );
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+
+    backdrop-filter: blur(8px);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease;
+}
+
+.about-stat:hover {
+    transform:
+        translateY(-4px);
+
+    border-color:
+        rgba(
+            21,
+            211,
+            190,
+            0.55
+        );
+
+    background:
+        rgba(
+            9,
+            25,
+            27,
+            0.82
+        );
+}
+
+.stat-value {
+    color: #f5f8f9;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.stat-label {
+    color: #687781;
+
+    font-size: 9px;
+
+    font-weight: 500;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.7px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   40. ABOUT BUTTONS
+   ========================================================= */
+
+.about-buttons {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 28px;
+}
+
+.about-btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 13px;
+
+    min-height: 42px;
+
+    padding: 0 20px;
+
+    border-radius: 8px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.about-btn:hover {
+    transform:
+        translateY(-2px);
+}
+
+
+/* Primary */
+
+.primary-about {
+    color: #00110e;
+
+    background:
+        linear-gradient(
+            100deg,
+            #08bdf0,
+            #27df75
+        );
+
+    box-shadow:
+        0 0 20px
+        rgba(
+            20,
+            220,
+            190,
+            0.10
+        );
+}
+
+.primary-about span {
+    font-size: 15px;
+}
+
+
+/* Secondary */
+
+.secondary-about {
+    color: #dce4e7;
+
+    border: 1px solid #29363d;
+
+    background:
+        rgba(
+            9,
+            15,
+            18,
+            0.85
+        );
+}
+
+.secondary-about:hover {
+    color: #15e3c1;
+
+    border-color: #15e3c1;
+}
+
+
+/* =========================================================
+   41. TABLET
+   ========================================================= */
+
+@media (min-width: 851px) and (max-width: 1100px) {
+
+    .nav {
+        width: 92%;
+    }
+
+    .nav nav {
+        gap: 22px;
+    }
+
+    .hero-content {
+        width: 92%;
+        grid-template-columns: 0.95fr 1.05fr;
+        gap: 10px;
+    }
+
+    .copy h1 {
+        font-size: 50px;
+        letter-spacing: -2.2px;
+    }
+
+    .copy p {
+        max-width: 500px;
+        font-size: 15px;
+    }
+
+    .robot {
+        width: min(520px, 50vw);
+    }
+
+    .robot-back-glow {
+        width: 540px;
+        height: 540px;
+    }
+
+    .robot-orbits .orbital-1 {
+        width: 500px;
+        height: 205px;
+    }
+
+    .robot-orbits .orbital-2 {
+        width: 445px;
+        height: 180px;
+    }
+
+    .about-container {
+        width: 92%;
+        gap: 45px;
+    }
+
+    .about-copy h2 {
+        font-size: 43px;
+    }
+}
+
+
+@media (max-width: 850px) {
+
+    /* Navigation */
+
+    .nav {
+        width: 90%;
+    }
+
+    .nav nav {
+        display: none;
+    }
+
+    .talk {
+        padding: 10px 13px;
+    }
+
+
+    /* Terminal */
+
+    .terminal {
+        width: 90vw;
+    }
+
+    .terminal-body {
+        height: 330px;
+
+        padding: 28px 20px;
+
+        font-size: 13px;
+
+        line-height: 2;
+    }
+
+    .line {
+        min-height: 26px;
+    }
+
+    .typing-cursor {
+        width: 7px;
+
+        height: 1em;
+
+        margin-left: 3px;
+
+        vertical-align: -0.15em;
+    }
+
+    .launching {
+        bottom: 8%;
+
+        font-size: 12px;
+    }
+
+
+    /* Hero */
+
+    .hero-content {
+        width: 90%;
+
+        height:
+            calc(
+                100vh - 70px
+            );
+    }
+
+    .copy h1 {
+        font-size: 43px;
+
+        letter-spacing: -1.8px;
+    }
+
+    .role,
+    .hello {
+        font-size: 23px;
+    }
+
+    .copy p {
+        font-size: 14px;
+    }
+
+
+    /* Robot */
+
+    .robot {
+        width: min(
+            480px,
+            52vw
+        );
+    }
+
+    .robot-back-glow {
+        width: 480px;
+        height: 480px;
+    }
+
+    .robot-orbits .orbital-1 {
+        width: 430px;
+        height: 180px;
+    }
+
+    .robot-orbits .orbital-2 {
+        width: 390px;
+        height: 160px;
+    }
+
+
+    /* About */
+
+    .about-page {
+        min-height: auto;
+
+        padding:
+            90px 0
+            100px;
+    }
+
+    .about-container {
+        width: 90%;
+
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+
+        padding: 40px 0;
+    }
+
+    .profile-visual {
+        height: 400px;
+    }
+
+    .about-copy {
+        max-width: 650px;
+
+        margin: 0 auto;
+
+        text-align: center;
+    }
+
+    .about-label {
+        justify-content: center;
+    }
+
+    .about-copy p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .about-stats {
+        justify-content: center;
+    }
+
+    .about-buttons {
+        justify-content: center;
+    }
+}
+
+
+/* =========================================================
+   42. MOBILE
+   ========================================================= */
+
+@media (max-width: 520px) {
+
+    /* Navigation */
+
+    .nav {
+        width: 92%;
+
+        height: 65px;
+    }
+
+    .brand {
+        font-size: 17px;
+    }
+
+    .talk {
+        padding: 9px 12px;
+
+        font-size: 11px;
+    }
+
+
+    /* Terminal */
+
+    .terminal {
+        width: 92vw;
+
+        border-radius: 10px;
+    }
+
+    .terminal-bar {
+        height: 38px;
+
+        padding: 0 12px;
+    }
+
+    .dot {
+        width: 10px;
+        height: 10px;
+    }
+
+    .terminal-title {
+        margin-left: 8px;
+
+        font-size: 10px;
+    }
+
+    .terminal-body {
+        height: 300px;
+
+        padding: 25px 17px;
+
+        font-size: 11px;
+
+        line-height: 2;
+    }
+
+    .line {
+        min-height: 22px;
+    }
+
+    .typing-cursor {
+        width: 6px;
+
+        height: 1em;
+
+        margin-left: 2px;
+
+        vertical-align: -0.15em;
+    }
+
+    .launching {
+        bottom: 7%;
+
+        font-size: 10px;
+    }
+
+
+    /* =====================================================
+       MOBILE HERO
+       ===================================================== */
+
+    .hero-page {
+        height: auto;
+
+        min-height: 100vh;
+
+        overflow: visible;
+    }
+
+    .hero-content {
+        width: 92%;
+
+        height: auto;
+
+        min-height:
+            calc(
+                100vh - 65px
+            );
+
+        display: grid;
+
+        grid-template-columns: 1fr;
+
+        grid-template-rows:
+            auto
+            auto;
+
+        align-items: start;
+
+        padding-bottom: 0;
+    }
+
+    .copy {
+        padding-top: 20px;
+
+        padding-bottom: 0;
+
+        text-align: center;
+    }
+
+    .role,
+    .hello {
+        font-size: 21px;
+    }
+
+    .copy h1 {
+        font-size: 37px;
+
+        letter-spacing: -1.5px;
+    }
+
+    .copy p {
+        margin-left: auto;
+
+        margin-right: auto;
+
+        font-size: 13px;
+
+        line-height: 1.55;
+    }
+
+
+    /* Buttons */
+
+    .buttons {
+        justify-content: center;
+
+        gap: 10px;
+    }
+
+    .btn {
+        padding: 12px 17px;
+
+        font-size: 12px;
+    }
+
+
+    /* Social */
+
+    .socials {
+        justify-content: center;
+
+        margin-top: 18px;
+    }
+
+
+    /* =====================================================
+       MOBILE ROBOT
+       ===================================================== */
+
+    .robot-stage {
+        position: relative;
+
+        width: 100%;
+
+        height: 390px;
+
+        margin-top: -5px;
+
+        display: flex;
+
+        align-items: flex-start;
+
+        justify-content: center;
+
+        overflow: visible;
+
+        z-index: 50;
+    }
+
+    .robot {
+    width: 430px;
+
+    max-width: 115%;
+
+    height: auto;
+
+    transform:
+        translate(
+            -10px,
+            -35px
+        )
+        scale(0.86);
+
+    animation:
+        robotFloatMobile
+        4s
+        ease-in-out
+        infinite;
+}
+
+    @keyframes robotFloatMobile {
+
+    0%,
+    100% {
+        transform:
+            translate(
+                -10px,
+                -35px
+            )
+            scale(0.86);
+    }
+
+    50% {
+        transform:
+            translate(
+                -10px,
+                -52px
+            )
+            scale(0.86);
+    }
+}
+
+    .robot-back-glow {
+        width: 430px;
+        height: 430px;
+
+        top: -20px;
+    }
+
+    .robot-orbits .orbital-1 {
+        width: 300px;
+        height: 100px;
+    }
+
+    .robot-orbits .orbital-2 {
+        width: 350px;
+        height: 130px;
+    }
+
+    .robot-shadow {
+        width: 210px;
+
+        bottom: 10%;
+    }
+
+    .tiny-orb {
+        right: 12%;
+
+        bottom: 20%;
+    }
+
+
+    /* =====================================================
+       MOBILE ABOUT
+       ===================================================== */
+
+    .about-page {
+        min-height: auto;
+
+        padding:
+            70px 0
+            90px;
+    }
+
+    .about-container {
+        width: 92%;
+
+        gap: 10px;
+
+        padding: 0;
+    }
+
+    .profile-visual {
+        height: 340px;
+    }
+
+    .profile-halo {
+        width: 280px;
+        height: 280px;
+    }
+
+    .profile-image-wrap {
+        width: 205px;
+        height: 205px;
+    }
+
+
+    /* Tech icons */
+
+    .tech-orbit {
+        width: 29px;
+        height: 29px;
+
+        font-size: 8px;
+    }
+
+    .tech-orbit-1 {
+        top: 48px;
+        left: 22%;
+    }
+
+    .tech-orbit-2 {
+        top: 85px;
+        right: 13%;
+    }
+
+    .tech-orbit-3 {
+        top: 43%;
+        left: 5%;
+    }
+
+    .tech-orbit-4 {
+        bottom: 21%;
+        left: 11%;
+    }
+
+    .tech-orbit-5 {
+        bottom: 8%;
+        right: 20%;
+    }
+
+    .tech-orbit-6 {
+        top: 23%;
+        right: 2%;
+    }
+
+
+    /* About text */
+
+    .about-copy {
+        text-align: left;
+    }
+
+    .about-label {
+        justify-content: flex-start;
+
+        font-size: 9px;
+
+        letter-spacing: 1.5px;
+    }
+
+    .about-copy h2 {
+        font-size: 35px;
+
+        letter-spacing: -1.5px;
+    }
+
+    .about-copy h3 {
+        font-size: 17px;
+
+        margin-bottom: 18px;
+    }
+
+    .about-copy p {
+        font-size: 12px;
+
+        line-height: 1.65;
+    }
+
+
+    /* Stats */
+
+    .about-stats {
+        display: grid;
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+        gap: 7px;
+
+        margin-top: 22px;
+    }
+
+    .about-stat {
+        min-width: 0;
+
+        padding: 11px 8px;
+    }
+
+    .stat-value {
+        font-size: 11px;
+    }
+
+    .stat-label {
+        font-size: 7px;
+
+        letter-spacing: 0.3px;
+    }
+
+
+    /* About buttons */
+
+    .about-buttons {
+        margin-top: 22px;
+
+        gap: 8px;
+    }
+
+    .about-btn {
+        flex: 1;
+
+        min-height: 39px;
+
+        padding: 0 10px;
+
+        font-size: 10px;
+    }
+}
+
+
+/* =========================================================
+   43. VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .buttons,
+    .about-buttons {
+        width: 100%;
+    }
+
+    .btn,
+    .about-btn {
+        min-width: 0;
+    }
+
+    .brand {
+        font-size: 15px;
+    }
+
+    .talk {
+        padding:
+            8px 10px;
+
+        font-size: 10px;
+    }
+
+    .copy h1 {
+        font-size: 32px;
+    }
+
+    .role,
+    .hello {
+        font-size: 19px;
+    }
+
+    .copy p {
+        font-size: 12px;
+    }
+
+    .robot {
+        width: 370px;
+        max-width: 110%;
+    }
+
+    .about-copy h2 {
+        font-size: 31px;
+    }
+
+    .about-stat {
+        padding:
+            10px 5px;
+    }
+
+    .stat-value {
+        font-size: 10px;
+    }
+
+    .stat-label {
+        font-size: 6px;
+    }
+}
+
+
+/* =========================================================
+   44. REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .hero-page .stars,
+    .about-page::after {
+        animation: none !important;
+    }
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* =========================================================
+   LIVE STAR PARTICLES — INDIVIDUAL BLINK + FLOAT
+   ========================================================= */
+
+/* The old .stars used one big radial-gradient layer.
+   These rules style the individual particles created by JS. */
+.hero-page .stars,
+.about-page .about-particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+    background: none !important;
+    opacity: 1;
+}
+
+.star-particle {
+    position: absolute;
+    left: var(--left);
+    top: var(--top);
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    background: var(--star-color);
+    box-shadow: 0 0 calc(var(--size) * 3) var(--star-color);
+    opacity: var(--min-opacity);
+    transform: translate(-50%, -50%);
+    animation:
+        starTwinkle var(--duration) ease-in-out var(--delay) infinite;
+    will-change: transform, opacity;
+}
+
+@keyframes starTwinkle {
+    0%, 100% {
+        opacity: var(--min-opacity);
+        transform:
+            translate(
+                calc(-50% + var(--x1)),
+                calc(-50% + var(--y1))
+            )
+            scale(0.78);
+    }
+
+    25% {
+        opacity: var(--max-opacity);
+        transform:
+            translate(
+                calc(-50% + var(--x2)),
+                calc(-50% + var(--y2))
+            )
+            scale(1.15);
+    }
+
+    50% {
+        opacity: var(--mid-opacity);
+        transform:
+            translate(
+                calc(-50% + var(--x3)),
+                calc(-50% + var(--y3))
+            )
+            scale(0.92);
+    }
+
+    75% {
+        opacity: var(--max-opacity);
+        transform:
+            translate(
+                calc(-50% + var(--x4)),
+                calc(-50% + var(--y4))
+            )
+            scale(1.08);
+    }
+}
+
+/* Keep the particle layer alive above the background but below content. */
+.hero-page .hero-content,
+.hero-page .nav,
+.hero-page .robot-stage {
+    position: relative;
+    z-index: 2;
+}
+
+.about-page .about-container {
+    position: relative;
+    z-index: 2;
+}
+
+@media (max-width: 850px) {
+    .star-particle {
+        animation-duration: calc(var(--duration) * 0.9);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .star-particle {
+        animation: none !important;
+        opacity: var(--max-opacity);
+        transform: translate(-50%, -50%) !important;
+    }
+}
+
+/* =========================================================
+   45. ABOUT BACKEND TECH ORBIT — FINAL OVERRIDE
+   ========================================================= */
+
+/* Existing portfolio CSS remains intact.
+   These rules only replace the About-page tech badges with
+   a smooth circular backend technology orbit. */
+
+.profile-visual {
+    position: relative;
+    overflow: visible;
+}
+
+.tech-orbit-ring {
+    --orbit-radius: 190px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 380px;
+    height: 380px;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgba(21, 227, 193, 0.14);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 7;
+    animation: backendOrbitSpin 24s linear infinite;
+}
+
+.tech-orbit-ring::before,
+.tech-orbit-ring::after {
+    content: "";
+    position: absolute;
+    inset: 18px;
+    border: 1px solid rgba(0, 190, 210, 0.10);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.tech-orbit-ring::after {
+    inset: 46px;
+    border-color: rgba(21, 227, 193, 0.07);
+}
+
+.tech-orbit {
+    --orbit-angle: 0deg;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 42px;
+    height: 42px;
+    margin: 0;
+    padding: 8px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: rgba(7, 15, 20, 0.96);
+    border: 1px solid rgba(49, 77, 87, 0.95);
+    box-shadow:
+        0 0 12px rgba(0, 220, 200, 0.10),
+        inset 0 0 10px rgba(0, 220, 200, 0.035);
+    color: #fff;
+    font-size: 0;
+    pointer-events: auto;
+    z-index: 8;
+
+    /* Position + counter-rotation: logos stay upright. */
+    transform:
+        translate(-50%, -50%)
+        rotate(var(--orbit-angle))
+        translateY(calc(-1 * var(--orbit-radius)))
+        rotate(0deg);
+
+    animation: backendIconOrbit 24s linear infinite;
+    will-change: transform;
+}
+
+.tech-orbit img {
+    width: 22px;
+    height: 22px;
+    display: block;
+    object-fit: contain;
+    filter: drop-shadow(0 0 5px rgba(21, 227, 193, 0.20));
+}
+
+.tech-orbit:hover {
+    border-color: #15e3c1;
+    box-shadow:
+        0 0 18px rgba(21, 227, 193, 0.22),
+        inset 0 0 12px rgba(21, 227, 193, 0.07);
+}
+
+/* Six backend technologies, equally spaced. */
+.tech-orbit-1 { --orbit-angle: 0deg; }
+.tech-orbit-2 { --orbit-angle: 60deg; }
+.tech-orbit-3 { --orbit-angle: 120deg; }
+.tech-orbit-4 { --orbit-angle: 180deg; }
+.tech-orbit-5 { --orbit-angle: 240deg; }
+.tech-orbit-6 { --orbit-angle: 300deg; }
+
+@keyframes backendOrbitSpin {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes backendIconOrbit {
+    from {
+        transform:
+            translate(-50%, -50%)
+            rotate(var(--orbit-angle))
+            translateY(calc(-1 * var(--orbit-radius)))
+            rotate(0deg);
+    }
+    to {
+        transform:
+            translate(-50%, -50%)
+            rotate(calc(var(--orbit-angle) + 360deg))
+            translateY(calc(-1 * var(--orbit-radius)))
+            rotate(-360deg);
+    }
+}
+
+/* Tablet */
+@media (max-width: 1100px) and (min-width: 851px) {
+    .tech-orbit-ring {
+        --orbit-radius: 165px;
+        width: 330px;
+        height: 330px;
+    }
+
+    .tech-orbit {
+        width: 39px;
+        height: 39px;
+        padding: 7px;
+    }
+
+    .tech-orbit img {
+        width: 21px;
+        height: 21px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 850px) {
+    .tech-orbit-ring {
+        --orbit-radius: 150px;
+        width: 300px;
+        height: 300px;
+    }
+
+    .tech-orbit-ring::before {
+        inset: 14px;
+    }
+
+    .tech-orbit-ring::after {
+        inset: 34px;
+    }
+
+    .tech-orbit {
+        width: 34px;
+        height: 34px;
+        padding: 6px;
+    }
+
+    .tech-orbit img {
+        width: 19px;
+        height: 19px;
+    }
+}
+
+@media (max-width: 520px) {
+    .tech-orbit-ring {
+        --orbit-radius: 135px;
+        width: 270px;
+        height: 270px;
+    }
+
+    .tech-orbit {
+        width: 31px;
+        height: 31px;
+        padding: 5px;
+    }
+
+    .tech-orbit img {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media (max-width: 380px) {
+    .tech-orbit-ring {
+        --orbit-radius: 122px;
+        width: 245px;
+        height: 245px;
+    }
+
+    .tech-orbit {
+        width: 29px;
+        height: 29px;
+        padding: 5px;
+    }
+
+    .tech-orbit img {
+        width: 17px;
+        height: 17px;
+    }
+}
+
+
+
+/* =========================================================
+   46. BACKEND TECH CLICK DETAILS — FINAL
+   ========================================================= */
+
+.profile-visual {
+    overflow: visible;
+}
+
+.tech-orbit {
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.tech-orbit:focus-visible {
+    border-color: #15e3c1;
+    box-shadow:
+        0 0 0 3px rgba(21, 227, 193, 0.12),
+        0 0 20px rgba(21, 227, 193, 0.28);
+}
+
+/* Keep every backend logo clear and visible. */
+.tech-orbit img {
+    width: 23px;
+    height: 23px;
+    object-fit: contain;
+    opacity: 0.96;
+    filter:
+        brightness(1.12)
+        saturate(1.08)
+        drop-shadow(0 0 6px rgba(21, 227, 193, 0.22));
+}
+
+/* Django was looking too dark — make it noticeably brighter. */
+.tech-orbit-2 img {
+    opacity: 1;
+    filter:
+        brightness(2.05)
+        contrast(1.15)
+        drop-shadow(0 0 7px rgba(255, 255, 255, 0.42))
+        drop-shadow(0 0 12px rgba(21, 227, 193, 0.28));
+}
+
+.tech-orbit:hover img,
+.tech-orbit.is-selected img {
+    transform: scale(1.08);
+}
+
+.tech-orbit.is-selected {
+    border-color: #15e3c1;
+    background: rgba(9, 24, 27, 0.98);
+    box-shadow:
+        0 0 18px rgba(21, 227, 193, 0.34),
+        inset 0 0 12px rgba(21, 227, 193, 0.09);
+}
+
+/* Small glass card shown after clicking an icon. */
+.tech-details {
+    position: absolute;
+    left: 50%;
+    top: calc(50% + 132px);
+    width: min(280px, 88%);
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 34px 10px 11px;
+
+    border: 1px solid rgba(21, 227, 193, 0.22);
+    border-radius: 12px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(8, 18, 22, 0.96),
+            rgba(5, 12, 16, 0.94)
+        );
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.40),
+        0 0 22px rgba(21, 227, 193, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translate(-50%, 8px) scale(0.96);
+    transition:
+        opacity 0.22s ease,
+        visibility 0.22s ease,
+        transform 0.22s ease;
+
+    z-index: 30;
+}
+
+.tech-details.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translate(-50%, 0) scale(1);
+}
+
+.tech-details-icon {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+    display: grid;
+    place-items: center;
+    border-radius: 9px;
+    border: 1px solid rgba(21, 227, 193, 0.18);
+    background: rgba(255, 255, 255, 0.035);
+}
+
+.tech-details-icon img {
+    width: 21px;
+    height: 21px;
+    object-fit: contain;
+}
+
+.tech-details-content {
+    min-width: 0;
+}
+
+.tech-details-title {
+    display: block;
+    margin-bottom: 3px;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.tech-details-text {
+    margin: 0;
+    color: #aebbc2;
+    font-size: 9.5px;
+    line-height: 1.45;
+}
+
+.tech-details-close {
+    position: absolute;
+    top: 7px;
+    right: 8px;
+    width: 22px;
+    height: 22px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: #7f9097;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.tech-details-close:hover {
+    color: #15e3c1;
+    background: rgba(21, 227, 193, 0.07);
+}
+
+/* Tablet */
+@media (max-width: 1100px) and (min-width: 851px) {
+    .tech-details {
+        top: calc(50% + 118px);
+        width: 255px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 850px) {
+    .tech-details {
+        top: calc(50% + 112px);
+        width: min(255px, 86vw);
+        min-height: 68px;
+        padding: 9px 32px 9px 10px;
+    }
+
+    .tech-details-title {
+        font-size: 11px;
+    }
+
+    .tech-details-text {
+        font-size: 8.5px;
+    }
+
+    .tech-orbit img {
+        width: 19px;
+        height: 19px;
+    }
+
+    .tech-orbit-2 img {
+        filter:
+            brightness(2.0)
+            contrast(1.12)
+            drop-shadow(0 0 6px rgba(255, 255, 255, 0.38))
+            drop-shadow(0 0 10px rgba(21, 227, 193, 0.25));
+    }
+}
+
+@media (max-width: 520px) {
+    .tech-details {
+        top: calc(50% + 105px);
+        width: min(240px, 88vw);
+    }
+}
+
+@media (max-width: 380px) {
+    .tech-details {
+        top: calc(50% + 98px);
+        width: min(225px, 90vw);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tech-details {
+        transition: none;
+    }
+}
+/* =========================================================
+   FINAL — BACKEND TECH HOVER TOOLTIP
+   ========================================================= */
+
+/* Keep the existing orbit and make every icon reliably hoverable. */
+.tech-orbit {
+    pointer-events: auto !important;
+    cursor: pointer;
+}
+
+/* Django: clearly visible even on the dark background. */
+.tech-orbit-2 img {
+    opacity: 1 !important;
+    filter:
+        brightness(2.65)
+        contrast(1.28)
+        saturate(1.22)
+        drop-shadow(
+            0 0 5px
+            rgba(255, 255, 255, 0.72)
+        )
+        drop-shadow(
+            0 0 12px
+            rgba(21, 227, 193, 0.72)
+        )
+        drop-shadow(
+            0 0 20px
+            rgba(21, 227, 193, 0.30)
+        );
+}
+
+.tech-orbit-2:hover img {
+    filter:
+        brightness(3)
+        contrast(1.3)
+        saturate(1.3)
+        drop-shadow(
+            0 0 7px
+            rgba(255, 255, 255, 0.9)
+        )
+        drop-shadow(
+            0 0 16px
+            rgba(21, 227, 193, 0.85)
+        );
+}
+
+
+/* ---------------------------------------------------------
+   Small floating information card
+   --------------------------------------------------------- */
+
+.tech-details {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: min(270px, 78vw);
+
+    min-height: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    padding: 12px 30px 12px 11px;
+
+    border:
+        1px solid
+        rgba(21, 227, 193, 0.38);
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(6, 18, 22, 0.98),
+            rgba(3, 10, 14, 0.96)
+        );
+
+    box-shadow:
+        0 14px 38px
+        rgba(0, 0, 0, 0.48),
+
+        0 0 22px
+        rgba(21, 227, 193, 0.12);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    pointer-events: none;
+
+    /*
+       JS sets left/top to the current icon position.
+       This transform places the card just above it.
+    */
+    transform:
+        translate(-50%, -100%)
+        translateY(-10px)
+        scale(0.94);
+
+    transform-origin: center bottom;
+
+    transition:
+        opacity 0.18s ease,
+        visibility 0.18s ease,
+        transform 0.18s ease;
+
+    z-index: 100;
+}
+
+
+.tech-details.is-open {
+    opacity: 1;
+    visibility: visible;
+
+    transform:
+        translate(-50%, -100%)
+        translateY(-10px)
+        scale(1);
+}
+
+
+/* ---------------------------------------------------------
+   Small arrow pointing toward hovered icon
+   --------------------------------------------------------- */
+
+.tech-details::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: -6px;
+
+    width: 10px;
+    height: 10px;
+
+    background: #071316;
+
+    border-right:
+        1px solid
+        rgba(21, 227, 193, 0.38);
+
+    border-bottom:
+        1px solid
+        rgba(21, 227, 193, 0.38);
+
+    transform:
+        translateX(-50%)
+        rotate(45deg);
+}
+
+
+/* ---------------------------------------------------------
+   Icon inside tooltip
+   --------------------------------------------------------- */
+
+.tech-details-icon {
+    width: 36px;
+    height: 36px;
+
+    flex: 0 0 36px;
+
+    display: grid;
+    place-items: center;
+
+    border:
+        1px solid
+        rgba(21, 227, 193, 0.24);
+
+    border-radius: 10px;
+
+    background:
+        rgba(255, 255, 255, 0.045);
+
+    box-shadow:
+        inset 0 0 12px
+        rgba(21, 227, 193, 0.05);
+}
+
+.tech-details-icon img {
+    width: 22px;
+    height: 22px;
+
+    object-fit: contain;
+}
+
+
+/* ---------------------------------------------------------
+   Tooltip text
+   --------------------------------------------------------- */
+
+.tech-details-content {
+    min-width: 0;
+}
+
+.tech-details-title {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #19e5c3;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    line-height: 1.2;
+
+    letter-spacing: 0.15px;
+}
+
+.tech-details-text {
+    margin: 0;
+
+    color: #c5d0d5;
+
+    font-size: 10px;
+
+    font-weight: 400;
+
+    line-height: 1.5;
+}
+
+
+/* Hide the close button because this is now a hover tooltip. */
+.tech-details-close {
+    display: none !important;
+}
+
+
+/* ---------------------------------------------------------
+   Mobile
+   --------------------------------------------------------- */
+
+@media (max-width: 850px) {
+
+    .tech-details {
+        width: min(235px, 76vw);
+
+        padding:
+            10px
+            27px
+            10px
+            9px;
+
+        gap: 9px;
+    }
+
+    .tech-details-icon {
+        width: 31px;
+        height: 31px;
+
+        flex-basis: 31px;
+    }
+
+    .tech-details-icon img {
+        width: 19px;
+        height: 19px;
+    }
+
+    .tech-details-title {
+        font-size: 11.5px;
+    }
+
+    .tech-details-text {
+        font-size: 8.8px;
+        line-height: 1.45;
+    }
+}
+
+
+@media (max-width: 520px) {
+
+    .tech-details {
+        width: min(215px, 74vw);
+
+        padding:
+            9px
+            25px
+            9px
+            8px;
+    }
+
+    .tech-details-title {
+        font-size: 11px;
+    }
+
+    .tech-details-text {
+        font-size: 8.3px;
+    }
+}
+
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+    .tech-details {
+        transition: none;
+    }
+}
+
+/* =========================================================
+   46. SKILLS & TECHNOLOGIES
+   ========================================================= */
+
+.skills-page {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 105px 0 90px;
+    overflow: hidden;
+    background:
+        radial-gradient(
+            circle at 15% 35%,
+            rgba(0, 190, 170, 0.075),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 88% 68%,
+            rgba(0, 145, 180, 0.055),
+            transparent 34%
+        ),
+        #000;
+    z-index: 2;
+}
+
+.skills-container {
+    position: relative;
+    z-index: 5;
+    width: min(1120px, 88%);
+    margin: 0 auto;
+}
+
+/* Heading */
+
+.skills-heading {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 48px;
+}
+
+.skills-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 13px;
+    margin-bottom: 13px;
+    color: #15e3c1;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.skills-label span {
+    width: 38px;
+    height: 1px;
+    background: #15e3c1;
+    box-shadow: 0 0 9px rgba(21, 227, 193, 0.55);
+}
+
+.skills-heading h2 {
+    margin: 0 0 12px;
+    color: #fff;
+    font-size: clamp(38px, 4.5vw, 56px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2px;
+}
+
+.skills-heading h2 em {
+    color: #15e3c1;
+    font-style: normal;
+}
+
+.skills-heading p {
+    max-width: 590px;
+    margin: 0 auto;
+    color: #8f9da5;
+    font-size: 14px;
+    line-height: 1.65;
+}
+
+
+/* Technology grid */
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.skill-card {
+    position: relative;
+    min-height: 108px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 17px 16px;
+    overflow: hidden;
+    border: 1px solid rgba(40, 58, 65, 0.85);
+    border-radius: 13px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(10, 19, 24, 0.96),
+            rgba(5, 11, 15, 0.94)
+        );
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.018),
+        0 10px 28px rgba(0, 0, 0, 0.18);
+    transition:
+        transform 0.28s ease,
+        border-color 0.28s ease,
+        background 0.28s ease,
+        box-shadow 0.28s ease;
+}
+
+.skill-card::before {
+    content: "";
+    position: absolute;
+    left: -35%;
+    top: -80%;
+    width: 80%;
+    height: 220%;
+    background: rgba(21, 227, 193, 0.055);
+    transform: rotate(20deg);
+    filter: blur(30px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(21, 227, 193, 0.38);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(10, 27, 30, 0.98),
+            rgba(5, 14, 17, 0.98)
+        );
+    box-shadow:
+        0 15px 32px rgba(0, 0, 0, 0.32),
+        0 0 22px rgba(21, 227, 193, 0.075);
+}
+
+.skill-card:hover::before {
+    opacity: 1;
+}
+
+
+/* Skill icon */
+
+.skill-icon {
+    position: relative;
+    z-index: 2;
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(21, 227, 193, 0.16);
+    border-radius: 12px;
+    background:
+        radial-gradient(
+            circle,
+            rgba(21, 227, 193, 0.09),
+            rgba(255, 255, 255, 0.025)
+        );
+    transition:
+        transform 0.28s ease,
+        border-color 0.28s ease,
+        box-shadow 0.28s ease;
+}
+
+.skill-icon img {
+    width: 27px;
+    height: 27px;
+    object-fit: contain;
+    transition:
+        transform 0.28s ease,
+        filter 0.28s ease;
+}
+
+.skill-card:hover .skill-icon {
+    transform: scale(1.06);
+    border-color: rgba(21, 227, 193, 0.34);
+    box-shadow:
+        0 0 17px rgba(21, 227, 193, 0.10);
+}
+
+.skill-card:hover .skill-icon img {
+    transform: scale(1.1);
+    filter:
+        drop-shadow(
+            0 0 7px
+            rgba(21, 227, 193, 0.25)
+        );
+}
+
+
+/* Django extra visibility */
+
+.django-skill-icon img {
+    opacity: 1;
+    filter:
+        brightness(2.15)
+        contrast(1.16)
+        drop-shadow(
+            0 0 6px
+            rgba(21, 227, 193, 0.38)
+        );
+}
+
+.skill-card:hover .django-skill-icon img {
+    filter:
+        brightness(2.45)
+        contrast(1.2)
+        drop-shadow(
+            0 0 9px
+            rgba(21, 227, 193, 0.62)
+        );
+}
+
+
+/* Custom DRF / API badges */
+
+.drf-icon span,
+.api-icon span {
+    color: #15e3c1;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.api-icon span {
+    font-size: 15px;
+    letter-spacing: -1px;
+}
+
+
+/* Skill text */
+
+.skill-info {
+    position: relative;
+    z-index: 2;
+    min-width: 0;
+}
+
+.skill-info h3 {
+    margin: 0 0 5px;
+    overflow: hidden;
+    color: #f2f5f6;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.15;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.skill-info span {
+    color: #697a82;
+    font-size: 9px;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: 0.2px;
+}
+
+.skill-number {
+    position: absolute;
+    right: 12px;
+    top: 10px;
+    color: rgba(130, 151, 158, 0.34);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 8px;
+    font-weight: 600;
+}
+
+
+/* Bottom summary */
+
+.skills-summary {
+    width: min(650px, 100%);
+    margin: 43px auto 0;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 26px;
+    border: 1px solid rgba(40, 58, 65, 0.72);
+    border-radius: 15px;
+    background: rgba(7, 15, 19, 0.68);
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.skills-summary-item {
+    min-width: 110px;
+    text-align: center;
+}
+
+.skills-summary-item strong {
+    display: block;
+    margin-bottom: 4px;
+    color: #15e3c1;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.skills-summary-item span {
+    color: #71828a;
+    font-size: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+}
+
+.skills-summary-line {
+    width: 1px;
+    height: 32px;
+    background: rgba(64, 83, 90, 0.65);
+}
+
+
+/* Skills background glows */
+
+.skills-bg-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(75px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.skills-bg-glow-left {
+    width: 440px;
+    height: 440px;
+    left: -220px;
+    top: 180px;
+    background: rgba(0, 190, 170, 0.09);
+}
+
+.skills-bg-glow-right {
+    width: 420px;
+    height: 420px;
+    right: -210px;
+    bottom: 80px;
+    background: rgba(0, 150, 190, 0.075);
+}
+
+
+/* Skills star layer */
+
+.skills-stars {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.42;
+    background-image:
+        radial-gradient(
+            circle at 9% 20%,
+            #fff 0 1px,
+            transparent 1.5px
+        ),
+        radial-gradient(
+            circle at 26% 73%,
+            #7efcff 0 1px,
+            transparent 1.5px
+        ),
+        radial-gradient(
+            circle at 48% 18%,
+            #fff 0 1px,
+            transparent 1.5px
+        ),
+        radial-gradient(
+            circle at 72% 82%,
+            #fff 0 1px,
+            transparent 1.5px
+        ),
+        radial-gradient(
+            circle at 91% 38%,
+            #b9ffff 0 1px,
+            transparent 1.5px
+        );
+    background-size:
+        260px 220px,
+        340px 280px,
+        390px 320px,
+        300px 260px,
+        420px 350px;
+    animation:
+        skillsStarsDrift 20s ease-in-out infinite alternate,
+        skillsStarsBlink 6s ease-in-out infinite;
+}
+
+@keyframes skillsStarsDrift {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    50% {
+        transform: translate3d(4px, -3px, 0);
+    }
+
+    100% {
+        transform: translate3d(-4px, 3px, 0);
+    }
+}
+
+@keyframes skillsStarsBlink {
+    0%, 100% {
+        opacity: 0.30;
+    }
+
+    35% {
+        opacity: 0.52;
+    }
+
+    62% {
+        opacity: 0.35;
+    }
+
+    80% {
+        opacity: 0.58;
+    }
+}
+
+
+/* Reveal animation */
+
+.skill-card {
+    opacity: 0;
+    transform: translateY(18px);
+}
+
+.skills-page.skills-visible .skill-card {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.skills-page.skills-visible .skill-card:nth-child(1) { transition-delay: 0.03s; }
+.skills-page.skills-visible .skill-card:nth-child(2) { transition-delay: 0.06s; }
+.skills-page.skills-visible .skill-card:nth-child(3) { transition-delay: 0.09s; }
+.skills-page.skills-visible .skill-card:nth-child(4) { transition-delay: 0.12s; }
+.skills-page.skills-visible .skill-card:nth-child(5) { transition-delay: 0.15s; }
+.skills-page.skills-visible .skill-card:nth-child(6) { transition-delay: 0.18s; }
+.skills-page.skills-visible .skill-card:nth-child(7) { transition-delay: 0.21s; }
+.skills-page.skills-visible .skill-card:nth-child(8) { transition-delay: 0.24s; }
+.skills-page.skills-visible .skill-card:nth-child(9) { transition-delay: 0.27s; }
+.skills-page.skills-visible .skill-card:nth-child(10) { transition-delay: 0.30s; }
+.skills-page.skills-visible .skill-card:nth-child(11) { transition-delay: 0.33s; }
+.skills-page.skills-visible .skill-card:nth-child(12) { transition-delay: 0.36s; }
+
+.skills-page.skills-visible .skill-card {
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease,
+        border-color 0.28s ease,
+        background 0.28s ease,
+        box-shadow 0.28s ease;
+}
+
+
+/* =========================================================
+   SKILLS RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1100px) and (min-width: 851px) {
+
+    .skills-page {
+        padding-top: 90px;
+    }
+
+    .skills-grid {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+    }
+}
+
+
+@media (max-width: 850px) {
+
+    .skills-page {
+        min-height: auto;
+        padding: 82px 0 70px;
+    }
+
+    .skills-container {
+        width: min(680px, 88%);
+    }
+
+    .skills-heading {
+        margin-bottom: 34px;
+    }
+
+    .skills-heading h2 {
+        font-size: 40px;
+        letter-spacing: -1.5px;
+    }
+
+    .skills-heading p {
+        font-size: 12px;
+        max-width: 480px;
+    }
+
+    .skills-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .skill-card {
+        min-height: 96px;
+        padding: 14px 12px;
+        gap: 10px;
+    }
+
+    .skill-icon {
+        width: 42px;
+        height: 42px;
+        flex-basis: 42px;
+        border-radius: 10px;
+    }
+
+    .skill-icon img {
+        width: 24px;
+        height: 24px;
+    }
+
+    .skill-info h3 {
+        font-size: 11.5px;
+    }
+
+    .skill-info span {
+        font-size: 8px;
+    }
+
+    .skills-summary {
+        margin-top: 32px;
+        padding: 15px 12px;
+        gap: 12px;
+    }
+
+    .skills-summary-item {
+        min-width: 80px;
+    }
+
+    .skills-summary-item strong {
+        font-size: 17px;
+    }
+
+    .skills-summary-item span {
+        font-size: 7px;
+        letter-spacing: 1px;
+    }
+}
+
+
+@media (max-width: 520px) {
+
+    .skills-page {
+        padding: 68px 0 58px;
+    }
+
+    .skills-container {
+        width: 90%;
+    }
+
+    .skills-label {
+        gap: 9px;
+        font-size: 8px;
+        letter-spacing: 2px;
+    }
+
+    .skills-label span {
+        width: 25px;
+    }
+
+    .skills-heading h2 {
+        font-size: 32px;
+    }
+
+    .skills-heading p {
+        font-size: 10.5px;
+        line-height: 1.55;
+    }
+
+    .skills-grid {
+        gap: 8px;
+    }
+
+    .skill-card {
+        min-height: 86px;
+        padding: 11px 9px;
+        gap: 8px;
+        border-radius: 10px;
+    }
+
+    .skill-icon {
+        width: 36px;
+        height: 36px;
+        flex-basis: 36px;
+        border-radius: 9px;
+    }
+
+    .skill-icon img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .skill-info h3 {
+        font-size: 9.5px;
+        margin-bottom: 3px;
+    }
+
+    .skill-info span {
+        font-size: 6.8px;
+    }
+
+    .skill-number {
+        right: 7px;
+        top: 6px;
+        font-size: 6.5px;
+    }
+
+    .drf-icon span {
+        font-size: 8px;
+    }
+
+    .api-icon span {
+        font-size: 11px;
+    }
+
+    .skills-summary {
+        padding: 12px 7px;
+        gap: 5px;
+        border-radius: 11px;
+    }
+
+    .skills-summary-item {
+        min-width: 0;
+        flex: 1;
+    }
+
+    .skills-summary-item strong {
+        font-size: 14px;
+    }
+
+    .skills-summary-item span {
+        font-size: 5.5px;
+        letter-spacing: 0.7px;
+    }
+
+    .skills-summary-line {
+        height: 25px;
+    }
+}
+
+
+@media (max-width: 380px) {
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skill-card {
+        min-height: 78px;
+    }
+
+    .skills-summary {
+        gap: 3px;
+    }
+
+    .skills-summary-item strong {
+        font-size: 13px;
+    }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+    .skills-stars,
+    .skills-page .skill-card {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+
+.about-typing-caret {
+    display: inline-block;
+    margin-left: 2px;
+    animation: aboutCaretBlink 0.8s infinite;
+}
+
+@keyframes aboutCaretBlink {
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
+}
+
+
+
+/* =========================================================
+   FEATURED PROJECTS — HORIZONTAL SCROLL
+   New project section only
+   ========================================================= */
+
+.featured-projects-page {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 640px;
+    overflow: hidden;
+    background:
+        radial-gradient(
+            circle at 12% 52%,
+            rgba(0, 190, 170, 0.09),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 86% 34%,
+            rgba(0, 170, 180, 0.055),
+            transparent 32%
+        ),
+        #020708;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+}
+
+.projects-sticky {
+    position: relative;
+    width: 100%;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.projects-bg-glow {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    filter: blur(100px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.projects-bg-glow-left {
+    left: -270px;
+    top: 30%;
+    background: rgba(0, 220, 195, 0.10);
+}
+
+.projects-bg-glow-right {
+    right: -270px;
+    bottom: -5%;
+    background: rgba(0, 150, 255, 0.055);
+}
+
+.projects-stars {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.42;
+    z-index: 0;
+    background-image:
+        radial-gradient(circle at 8% 18%, #fff 0 1px, transparent 1.5px),
+        radial-gradient(circle at 20% 77%, #7efcff 0 1px, transparent 1.5px),
+        radial-gradient(circle at 41% 11%, #fff 0 1px, transparent 1.5px),
+        radial-gradient(circle at 64% 23%, #fff 0 1px, transparent 1.5px),
+        radial-gradient(circle at 88% 69%, #7efcff 0 1px, transparent 1.5px),
+        radial-gradient(circle at 77% 88%, #fff 0 1px, transparent 1.5px);
+    background-size:
+        280px 230px,
+        350px 300px,
+        420px 330px,
+        330px 280px,
+        390px 350px,
+        300px 260px;
+    animation: projectsStarsDrift 20s ease-in-out infinite alternate;
+}
+
+@keyframes projectsStarsDrift {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        transform: translate3d(-4px, 3px, 0);
+    }
+}
+
+
+/* ---------------------------------------------------------
+   Horizontal track
+   --------------------------------------------------------- */
+
+.projects-track {
+    position: relative;
+    z-index: 2;
+    width: 300vw;
+    height: 100%;
+    display: flex;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+    transition:
+        transform 0.85s
+        cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.project-slide {
+    position: relative;
+    flex: 0 0 100vw;
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 5.5vw clamp(48px, 6vh, 64px);
+    opacity: 0.35;
+    transform: scale(0.96);
+    transition:
+        opacity 0.65s ease,
+        transform 0.85s
+        cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-slide.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.project-slide-inner {
+    width: min(1440px, 92%);
+    max-height: 100%;
+    display: grid;
+    grid-template-columns:
+        minmax(420px, 1.1fr)
+        minmax(400px, 0.9fr);
+    align-items: center;
+    gap: clamp(35px, 4.5vw, 80px);
+}
+
+
+/* ---------------------------------------------------------
+   Project Visual
+   --------------------------------------------------------- */
+
+.project-visual {
+    position: relative;
+    min-width: 0;
+    padding: 8px 0 16px;
+}
+
+.project-visual-glow {
+    position: absolute;
+    width: 72%;
+    height: 58%;
+    left: 14%;
+    top: 20%;
+    border-radius: 50%;
+    background: rgba(0, 230, 200, 0.12);
+    filter: blur(65px);
+    pointer-events: none;
+}
+
+.project-browser {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #25363d;
+    border-radius: 20px;
+    background: #081014;
+    box-shadow:
+        0 35px 90px rgba(0, 0, 0, 0.48),
+        0 0 55px rgba(0, 213, 190, 0.08);
+    transform:
+        perspective(1400px)
+        rotateY(2deg)
+        translateX(0);
+    transition:
+        transform 0.7s
+        cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 0.35s ease;
+}
+
+.project-slide.active .project-browser {
+    transform:
+        perspective(1400px)
+        rotateY(1deg)
+        translateX(0);
+}
+
+.project-slide.active .project-browser:hover {
+    transform:
+        perspective(1400px)
+        rotateY(0deg)
+        translateY(-5px);
+    border-color: #34545b;
+}
+
+.project-browser-bar {
+    position: relative;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 16px;
+    background: #0d151a;
+    border-bottom: 1px solid #1e2b31;
+}
+
+.project-browser-bar > span {
+    width: 10px;
+    height: 10px;
+    flex: 0 0 10px;
+    border-radius: 50%;
+    background: #46535a;
+}
+
+.project-browser-bar > span:nth-child(1) {
+    background: #ff6259;
+}
+
+.project-browser-bar > span:nth-child(2) {
+    background: #eab94d;
+}
+
+.project-browser-bar > span:nth-child(3) {
+    background: #32cf71;
+}
+
+.project-browser-url {
+    position: absolute;
+    left: 50%;
+    max-width: 55%;
+    overflow: hidden;
+    transform: translateX(-50%);
+    color: #566771;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+}
+
+.project-image-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    max-height: 42vh;
+    overflow: hidden;
+    background: #071012;
+}
+
+.project-image-wrap img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    opacity: 0.88;
+    filter: saturate(0.78) contrast(1.05);
+    transform: scale(1.015);
+    transition:
+        transform 1s
+        cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.6s ease;
+}
+
+.project-slide.active .project-browser:hover
+.project-image-wrap img {
+    transform: scale(1.045);
+    opacity: 0.94;
+}
+
+.project-image-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 240, 210, 0.08),
+            transparent 35%,
+            rgba(0, 0, 0, 0.24)
+        );
+}
+
+.project-image-corner {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-color: rgba(31, 224, 200, 0.72);
+    pointer-events: none;
+}
+
+.project-image-corner.top-left {
+    top: 20px;
+    left: 20px;
+    border-top: 1px solid;
+    border-left: 1px solid;
+}
+
+.project-image-corner.top-right {
+    top: 20px;
+    right: 20px;
+    border-top: 1px solid;
+    border-right: 1px solid;
+}
+
+.project-image-corner.bottom-left {
+    bottom: 20px;
+    left: 20px;
+    border-bottom: 1px solid;
+    border-left: 1px solid;
+}
+
+.project-image-corner.bottom-right {
+    right: 20px;
+    bottom: 20px;
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+}
+
+.project-floating-tag {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transform: translateY(30%);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 13px;
+    border: 1px solid #293a40;
+    border-radius: 8px;
+    background: rgba(5, 12, 15, 0.94);
+    color: #8fa0a9;
+    backdrop-filter: blur(10px);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    z-index: 4;
+}
+
+.project-floating-tag span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #18dfc4;
+    box-shadow: 0 0 11px #18dfc4;
+}
+
+
+/* ---------------------------------------------------------
+   Project Information
+   --------------------------------------------------------- */
+
+.project-info {
+    min-width: 0;
+    padding: 0;
+    opacity: 1;
+    transform: translateX(0);
+    transition:
+        opacity 0.45s ease 0.12s,
+        transform 0.75s
+        cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-slide:not(.active) .project-info {
+    opacity: 0;
+    transform: translateX(42px);
+}
+
+.project-number {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    margin-bottom: clamp(8px, 1.4vh, 18px);
+    color: #6d7d86;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.project-number span {
+    color: #1ce0c6;
+    font-size: 13px;
+}
+
+.project-number i {
+    width: 48px;
+    height: 1px;
+    display: inline-block;
+    background: #2a3b41;
+}
+
+.project-number small {
+    color: #64737b;
+    font-size: 10px;
+}
+
+.project-category {
+    margin-bottom: clamp(6px, 1vh, 12px);
+    color: #17d8c0;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+}
+
+.project-info h2 {
+    max-width: 650px;
+    margin: 0 0 clamp(8px, 1.4vh, 16px);
+    color: #f7fafb;
+    font-size: clamp(28px, 3.2vw, 46px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2px;
+}
+
+.project-info p {
+    max-width: 580px;
+    margin: 0 0 clamp(10px, 1.6vh, 20px);
+    color: #9aa8b0;
+    font-size: clamp(13px, 1vw, 15px);
+    line-height: 1.65;
+}
+
+.project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: clamp(10px, 1.6vh, 20px);
+}
+
+.project-stack span {
+    padding: 7px 10px;
+    border: 1px solid #27363c;
+    border-radius: 6px;
+    background: #091114;
+    color: #b8c4c9;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px;
+    font-weight: 500;
+    transition:
+        color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.project-stack span:hover {
+    color: #1ce0c6;
+    border-color: #245d58;
+    transform: translateY(-2px);
+}
+
+.project-highlights {
+    display: grid;
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+    gap: 9px;
+    max-width: 580px;
+    margin-bottom: clamp(12px, 1.8vh, 22px);
+}
+
+.project-highlight {
+    min-width: 0;
+    padding: clamp(9px, 1.1vh, 12px) 11px;
+    border: 1px solid #203038;
+    border-radius: 9px;
+    background: rgba(7, 14, 17, 0.68);
+}
+
+.project-highlight strong {
+    display: block;
+    overflow: hidden;
+    margin-bottom: 4px;
+    color: #e9f1f2;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.project-highlight span {
+    color: #64737b;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 7px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+.project-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.project-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    min-height: 44px;
+    padding: 0 18px;
+    border: 1px solid #27363c;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+.project-btn span {
+    font-size: 15px;
+    line-height: 1;
+}
+
+.project-btn:hover {
+    transform: translateY(-2px);
+}
+
+.project-btn-primary {
+    border-color: transparent;
+    background:
+        linear-gradient(
+            100deg,
+            #08bdf0,
+            #27df75
+        );
+    color: #00110e;
+    box-shadow:
+        0 0 24px
+        rgba(25, 221, 196, 0.11);
+}
+
+.project-btn-secondary {
+    background: #0a1115;
+    color: #d9e2e5;
+}
+
+.project-btn-secondary:hover {
+    border-color: #16d9c1;
+    color: #16d9c1;
+}
+
+
+/* ---------------------------------------------------------
+   Bottom navigation
+   --------------------------------------------------------- */
+
+.projects-navigation {
+    position: absolute;
+    z-index: 20;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    pointer-events: none;
+}
+
+.project-arrow {
+    position: absolute;
+    top: 50%;
+    width: 50px;
+    height: 50px;
+    display: grid;
+    place-items: center;
+    border: 1px solid #26363d;
+    border-radius: 50%;
+    background: rgba(7, 16, 20, 0.86);
+    color: #dce6e9;
+    font-size: 20px;
+    cursor: pointer;
+    pointer-events: auto;
+    backdrop-filter: blur(8px);
+    z-index: 25;
+    transition:
+        color 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+.project-arrow#project-prev {
+    left: clamp(14px, 2.2vw, 32px);
+    transform: translateY(-50%);
+}
+
+.project-arrow#project-next {
+    right: clamp(14px, 2.2vw, 32px);
+    transform: translateY(-50%);
+}
+
+.project-arrow:hover {
+    border-color: #18dcca;
+    background: #0b181c;
+    color: #18dcca;
+    transform: translateY(calc(-50% - 3px));
+}
+
+.project-dots {
+    position: absolute;
+    left: 50%;
+    bottom: clamp(14px, 2vh, 22px);
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    transform: translateX(-50%);
+
+    z-index: 25;
+    pointer-events: auto;
+}
+
+.project-dot {
+    width: 39px;
+    height: 3px;
+    padding: 0;
+    border: 0;
+    border-radius: 10px;
+    background: #26343a;
+    cursor: pointer;
+    transition:
+        width 0.4s ease,
+        background 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.project-dot.active {
+    width: 68px;
+    background: #1be0c5;
+
+    box-shadow:
+        0 0 13px
+        rgba(27, 224, 197, 0.42);
+
+    animation:
+        projectDotPulse
+        1.6s
+        ease-in-out
+        infinite;
+}
+
+@keyframes projectDotPulse {
+
+    0%,
+    100% {
+        opacity: 0.75;
+        box-shadow:
+            0 0 7px
+            rgba(27, 224, 197, 0.25);
+    }
+
+    50% {
+        opacity: 1;
+        box-shadow:
+            0 0 16px
+            rgba(27, 224, 197, 0.60);
+    }
+}
+
+
+/* ---------------------------------------------------------
+   Scroll hint
+   --------------------------------------------------------- */
+
+.featured-projects-page::after {
+    display: none;
+}
+
+
+/* ---------------------------------------------------------
+   Tablet
+   --------------------------------------------------------- */
+
+@media (max-width: 1100px) {
+
+    .featured-projects-page {
+        height: 100vh;
+        min-height: 620px;
+    }
+
+    .project-slide {
+        padding:
+            8px
+            4vw
+            clamp(42px, 5vh, 55px);
+    }
+
+    .project-slide-inner {
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(320px, 0.95fr);
+        gap: 32px;
+    }
+
+    .project-info h2 {
+        font-size: clamp(24px, 3.2vw, 36px);
+    }
+
+    .project-info p {
+        font-size: 13px;
+    }
+
+    .project-highlights {
+        gap: 7px;
+    }
+
+    .project-arrow#project-prev {
+        left: 12px;
+    }
+
+    .project-arrow#project-next {
+        right: 12px;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   Mobile
+   --------------------------------------------------------- */
+
+@media (max-width: 760px) {
+
+    .featured-projects-page {
+        height: 100vh;
+        min-height: 560px;
+    }
+
+    .projects-sticky {
+        min-height: 0;
+    }
+
+    .project-slide {
+        align-items: flex-start;
+        padding:
+            6px
+            4.5vw
+            55px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .project-slide-inner {
+        width: 100%;
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding-bottom: 20px;
+    }
+
+    .project-visual {
+        padding: 4px 0 12px;
+    }
+
+    .project-browser {
+        border-radius: 12px;
+        transform: none !important;
+    }
+
+    .project-browser-bar {
+        height: 32px;
+        padding: 0 10px;
+        gap: 5px;
+    }
+
+    .project-browser-bar > span {
+        width: 7px;
+        height: 7px;
+        flex-basis: 7px;
+    }
+
+    .project-browser-url {
+        font-size: 7px;
+    }
+
+    .project-image-wrap {
+        max-height: none;
+        aspect-ratio: 16 / 9;
+    }
+
+    .project-image-corner {
+        width: 20px;
+        height: 20px;
+    }
+
+    .project-image-corner.top-left {
+        top: 10px;
+        left: 10px;
+    }
+
+    .project-image-corner.top-right {
+        top: 10px;
+        right: 10px;
+    }
+
+    .project-image-corner.bottom-left {
+        bottom: 10px;
+        left: 10px;
+    }
+
+    .project-image-corner.bottom-right {
+        right: 10px;
+        bottom: 10px;
+    }
+
+    .project-floating-tag {
+        right: 4px;
+        bottom: 2px;
+        padding: 5px 8px;
+        font-size: 6.5px;
+        transform: none;
+    }
+
+    .project-info {
+        padding: 0;
+    }
+
+    .project-number {
+        margin-bottom: 8px;
+        font-size: 9px;
+    }
+
+    .project-category {
+        margin-bottom: 4px;
+        font-size: 7.5px;
+        letter-spacing: 1.8px;
+    }
+
+    .project-info h2 {
+        margin-bottom: 8px;
+        font-size: 22px;
+        letter-spacing: -0.6px;
+    }
+
+    .project-info p {
+        margin-bottom: 10px;
+        font-size: 11.5px;
+        line-height: 1.55;
+    }
+
+    .project-stack {
+        gap: 5px;
+        margin-bottom: 12px;
+    }
+
+    .project-stack span {
+        padding: 5px 7px;
+        font-size: 7.5px;
+    }
+
+    .project-highlights {
+        gap: 6px;
+        margin-bottom: 14px;
+    }
+
+    .project-highlight {
+        padding: 7px 6px;
+    }
+
+    .project-highlight strong {
+        font-size: 8px;
+        margin-bottom: 3px;
+    }
+
+    .project-highlight span {
+        font-size: 5.5px;
+    }
+
+    .project-actions {
+        gap: 8px;
+    }
+
+    .project-btn {
+        min-height: 36px;
+        padding: 0 12px;
+        gap: 8px;
+        font-size: 9px;
+    }
+
+    .project-btn span {
+        font-size: 11px;
+    }
+
+    .projects-navigation {
+        inset: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .project-arrow {
+        display: none;
+    }
+
+    .project-dots {
+        bottom: 14px;
+        gap: 6px;
+    }
+
+    .project-dot {
+        width: 20px;
+    }
+
+    .project-dot.active {
+        width: 40px;
+    }
+
+    .featured-projects-page::after {
+        display: none;
+    }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+    .projects-stars,
+    .projects-track,
+    .project-slide,
+    .project-info,
+    .project-browser,
+    .project-image-wrap img,
+    .project-dot,
+    .project-arrow {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* =========================================================
+   PROJECTS SECTION HEADING
+   ========================================================= */
+
+.projects-heading {
+    position: relative;
+    width: min(900px, 92vw);
+    margin: 0 auto;
+    padding-top: clamp(16px, 2.4vh, 28px);
+    padding-bottom: clamp(6px, 1vh, 12px);
+    text-align: center;
+    z-index: 5;
+    pointer-events: auto;
+    flex-shrink: 0;
+}
+
+/* ---------------------------------------------------------
+   Small Label
+   --------------------------------------------------------- */
+
+.projects-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 6px;
+    color: #12e3c7;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+}
+
+.projects-label span {
+    display: block;
+    width: 36px;
+    height: 2px;
+    background: #12e3c7;
+    box-shadow:
+        0 0 10px
+        rgba(18, 227, 199, 0.45);
+}
+
+/* ---------------------------------------------------------
+   Main Heading
+   --------------------------------------------------------- */
+
+.projects-heading h2 {
+    margin: 0;
+    font-size: clamp(30px, 3.2vw, 44px);
+    line-height: 1.05;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    color: #f5f7f8;
+}
+
+.projects-heading h2 em {
+    color: #12e3c7;
+    font-style: normal;
+}
+
+/* ---------------------------------------------------------
+   Description
+   --------------------------------------------------------- */
+
+.projects-heading p {
+    margin: 6px auto 0;
+    max-width: 620px;
+    color: #87969d;
+    font-size: clamp(12px, 1vw, 13px);
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+/* ---------------------------------------------------------
+   Heading - Mobile
+   --------------------------------------------------------- */
+
+@media (max-width: 760px) {
+    .projects-heading {
+        padding-top: 14px;
+        padding-bottom: 6px;
+        width: 92vw;
+    }
+
+    .projects-label {
+        font-size: 8.5px;
+        letter-spacing: 2px;
+        gap: 8px;
+        margin-bottom: 3px;
+    }
+
+    .projects-label span {
+        width: 20px;
+        height: 1px;
+    }
+
+    .projects-heading h2 {
+        font-size: 24px;
+        letter-spacing: -0.8px;
+    }
+
+    .projects-heading p {
+        margin-top: 4px;
+        font-size: 10.5px;
+        line-height: 1.4;
+    }
+}
+
+/* =========================================================
+   EXPERIENCE & EDUCATION — MY JOURNEY
+   Scroll-reveal timeline
+   ========================================================= */
+
+.journey-page {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 70px 0 90px;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 10% 42%, rgba(0, 190, 170, 0.075), transparent 30%),
+        radial-gradient(circle at 90% 55%, rgba(0, 150, 180, 0.055), transparent 32%),
+        #020708;
+    isolation: isolate;
+}
+
+.journey-bg-glow {
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    filter: blur(100px);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.journey-bg-glow-left {
+    left: -220px;
+    top: 25%;
+    background: rgba(0, 210, 185, 0.08);
+}
+
+.journey-bg-glow-right {
+    right: -220px;
+    top: 50%;
+    background: rgba(0, 170, 190, 0.065);
+}
+
+.journey-stars {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.55;
+    background-image:
+        radial-gradient(circle at 8% 18%, #fff 0 1px, transparent 1.5px),
+        radial-gradient(circle at 18% 76%, #7efcff 0 1px, transparent 1.5px),
+        radial-gradient(circle at 34% 32%, #fff 0 1px, transparent 1.5px),
+        radial-gradient(circle at 53% 72%, #fff 0 1px, transparent 1.5px),
+        radial-gradient(circle at 72% 20%, #7efcff 0 1px, transparent 1.5px),
+        radial-gradient(circle at 88% 62%, #fff 0 1px, transparent 1.5px);
+    background-size:
+        260px 240px,
+        320px 280px,
+        390px 320px,
+        300px 260px,
+        420px 360px,
+        350px 300px;
+    animation: journeyStarsFloat 18s ease-in-out infinite alternate;
+}
+
+@keyframes journeyStarsFloat {
+    from { transform: translate3d(0, 0, 0); }
+    to   { transform: translate3d(-4px, 3px, 0); }
+}
+
+/* Heading */
+
+.journey-container {
+    position: relative;
+    z-index: 2;
+    width: min(1120px, 90%);
+    margin: 0 auto;
+}
+
+.journey-heading {
+    text-align: center;
+    margin: 0 auto 48px;
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+        opacity 0.8s ease,
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.journey-heading.journey-heading-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.journey-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    color: #16e3c2;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.journey-label span {
+    width: 38px;
+    height: 1px;
+    background: #16e3c2;
+    box-shadow: 0 0 10px rgba(22, 227, 194, 0.45);
+}
+
+.journey-heading h2 {
+    margin: 0;
+    color: #f5f7f8;
+    font-size: clamp(40px, 4.3vw, 62px);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -2.5px;
+}
+
+.journey-heading h2 em {
+    color: #16e3c2;
+    font-style: normal;
+}
+
+.journey-heading p {
+    max-width: 650px;
+    margin: 16px auto 0;
+    color: #7f9198;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* Timeline */
+
+.journey-timeline {
+    --journey-progress: 0%;
+    position: relative;
+    width: 100%;
+    padding: 10px 0 20px;
+}
+
+.journey-timeline::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    transform: translateX(-50%);
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            rgba(22, 227, 194, 0.28) 6%,
+            rgba(22, 227, 194, 0.28) 94%,
+            transparent
+        );
+    box-shadow: 0 0 14px rgba(22, 227, 194, 0.16);
+}
+
+.journey-timeline::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: var(--journey-progress);
+    max-height: 100%;
+    transform: translateX(-50%);
+    transform-origin: top center;
+    background: linear-gradient(
+        to bottom,
+        #16e3c2,
+        rgba(22, 227, 194, 0.35)
+    );
+    box-shadow:
+        0 0 10px rgba(22, 227, 194, 0.45),
+        0 0 22px rgba(22, 227, 194, 0.18);
+    transition: height 0.12s linear;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.journey-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 230px;
+    margin-bottom: 44px;
+}
+
+.journey-item-left .journey-card {
+    grid-column: 1;
+    margin-right: 62px;
+}
+
+.journey-item-right .journey-card {
+    grid-column: 2;
+    margin-left: 62px;
+}
+
+/* Timeline node */
+
+.journey-dot {
+    position: absolute;
+    top: 38px;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    transform: translateX(-50%);
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(22, 227, 194, 0.55);
+    border-radius: 50%;
+    background: #020708;
+    box-shadow:
+        0 0 0 7px rgba(22, 227, 194, 0.035),
+        0 0 18px rgba(22, 227, 194, 0.18);
+    z-index: 5;
+    transition:
+        border-color 0.35s ease,
+        box-shadow 0.35s ease,
+        transform 0.35s ease;
+}
+
+.journey-dot span {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #16e3c2;
+    box-shadow: 0 0 12px #16e3c2;
+    animation: journeyDotPulse 2s ease-in-out infinite;
+}
+
+@keyframes journeyDotPulse {
+    0%, 100% {
+        opacity: 0.55;
+        transform: scale(0.85);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.15);
+    }
+}
+
+.journey-item.journey-active .journey-dot {
+    border-color: #16e3c2;
+    box-shadow:
+        0 0 0 8px rgba(22, 227, 194, 0.055),
+        0 0 25px rgba(22, 227, 194, 0.35);
+    transform: translateX(-50%) scale(1.08);
+}
+
+/* Cards */
+
+.journey-card {
+    position: relative;
+    padding: 27px 29px 25px;
+    border: 1px solid #17282e;
+    border-radius: 16px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(9, 19, 23, 0.96),
+            rgba(3, 10, 13, 0.96)
+        );
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.015),
+        0 18px 45px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    will-change: transform, opacity;
+    transition:
+        opacity 0.8s ease,
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.journey-item-left .journey-card {
+    transform: translate3d(-55px, 18px, 0) scale(0.97);
+}
+
+.journey-item-right .journey-card {
+    transform: translate3d(55px, 18px, 0) scale(0.97);
+}
+
+.journey-card.journey-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+}
+
+.journey-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    background:
+        linear-gradient(
+            110deg,
+            transparent 20%,
+            rgba(22, 227, 194, 0.08) 50%,
+            transparent 80%
+        );
+    transform: translateX(-100%);
+}
+
+.journey-card.journey-visible::after {
+    animation: journeyCardSweep 1.1s ease 0.15s 1 forwards;
+}
+
+@keyframes journeyCardSweep {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    20% {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
+
+.journey-card::before {
+    content: "";
+    position: absolute;
+    top: 30px;
+    width: 62px;
+    height: 1px;
+    background: rgba(22, 227, 194, 0.45);
+}
+
+.journey-item-left .journey-card::before {
+    right: -62px;
+}
+
+.journey-item-right .journey-card::before {
+    left: -62px;
+}
+
+.journey-card:hover {
+    border-color: rgba(22, 227, 194, 0.32);
+    box-shadow:
+        0 18px 55px rgba(0, 0, 0, 0.28),
+        0 0 30px rgba(22, 227, 194, 0.045);
+}
+
+.journey-item-left .journey-card:hover {
+    transform: translateX(5px);
+}
+
+.journey-item-right .journey-card:hover {
+    transform: translateX(-5px);
+}
+
+/* Card content */
+
+.journey-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 12px;
+}
+
+.journey-type {
+    color: #16e3c2;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2.3px;
+}
+
+.journey-date {
+    color: #596b73;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+.journey-card h3 {
+    margin: 0 0 7px;
+    color: #eef3f4;
+    font-size: 20px;
+    font-weight: 750;
+    line-height: 1.2;
+    letter-spacing: -0.4px;
+}
+
+.journey-card h4 {
+    margin: 0 0 12px;
+    color: #93a5ab;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.journey-card p {
+    max-width: 455px;
+    margin: 0 0 16px;
+    color: #70838a;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.journey-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.journey-tags span {
+    padding: 6px 9px;
+    border: 1px solid #1a3036;
+    border-radius: 6px;
+    background: #071014;
+    color: #7f959c;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 8px;
+    line-height: 1;
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+    .journey-page {
+        padding: 90px 0 70px;
+    }
+
+    .journey-container {
+        width: min(720px, 90%);
+    }
+
+    .journey-heading {
+        margin-bottom: 55px;
+    }
+
+    .journey-item {
+        min-height: 210px;
+        margin-bottom: 34px;
+    }
+
+    .journey-item-left .journey-card {
+        margin-right: 45px;
+    }
+
+    .journey-item-right .journey-card {
+        margin-left: 45px;
+    }
+
+    .journey-item-left .journey-card::before {
+        right: -45px;
+        width: 45px;
+    }
+
+    .journey-item-right .journey-card::before {
+        left: -45px;
+        width: 45px;
+    }
+
+    .journey-card {
+        padding: 22px 22px;
+    }
+
+    .journey-card h3 {
+        font-size: 17px;
+    }
+
+    .journey-card p {
+        font-size: 11px;
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 650px) {
+    .journey-page {
+        min-height: auto;
+        padding: 75px 0 55px;
+    }
+
+    .journey-container {
+        width: 90%;
+    }
+
+    .journey-heading {
+        margin-bottom: 45px;
+    }
+
+    .journey-label {
+        font-size: 8px;
+        letter-spacing: 2.5px;
+        gap: 8px;
+    }
+
+    .journey-label span {
+        width: 22px;
+    }
+
+    .journey-heading h2 {
+        font-size: 35px;
+        letter-spacing: -1.5px;
+    }
+
+    .journey-heading p {
+        margin-top: 11px;
+        font-size: 10px;
+        line-height: 1.55;
+    }
+
+    .journey-timeline {
+        padding-left: 23px;
+    }
+
+    .journey-timeline::before {
+        left: 6px;
+        transform: none;
+    }
+
+    .journey-timeline::after {
+        left: 6px;
+        transform: none;
+    }
+
+    .journey-item {
+        display: block;
+        min-height: 0;
+        margin-bottom: 24px;
+    }
+
+    .journey-item-left .journey-card,
+    .journey-item-right .journey-card {
+        margin: 0;
+        transform: translateY(24px) scale(0.98);
+    }
+
+    .journey-card.journey-visible {
+        transform: translateY(0) scale(1);
+    }
+
+    .journey-dot {
+        top: 29px;
+        left: 0;
+        width: 13px;
+        height: 13px;
+        transform: translateX(-50%);
+    }
+
+    .journey-item.journey-active .journey-dot {
+        transform: translateX(-50%) scale(1.08);
+    }
+
+    .journey-card {
+        padding: 18px 17px;
+        border-radius: 12px;
+    }
+
+    .journey-card::before,
+    .journey-item-left .journey-card::before,
+    .journey-item-right .journey-card::before {
+        left: -23px;
+        right: auto;
+        width: 23px;
+    }
+
+    .journey-card-top {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
+        margin-bottom: 10px;
+    }
+
+    .journey-type {
+        font-size: 8px;
+    }
+
+    .journey-date {
+        font-size: 8px;
+    }
+
+    .journey-card h3 {
+        font-size: 17px;
+    }
+
+    .journey-card h4 {
+        font-size: 11px;
+    }
+
+    .journey-card p {
+        font-size: 10px;
+        line-height: 1.65;
+    }
+
+    .journey-tags span {
+        padding: 5px 7px;
+        font-size: 7px;
+    }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .journey-page *,
+    .journey-page *::before,
+    .journey-page *::after {
+        animation: none !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .journey-heading,
+    .journey-card {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
+
+/* =========================================================
+   JOURNEY — VISIBILITY SAFETY
+   Prevent cards from staying invisible if IntersectionObserver
+   is delayed or unavailable.
+   ========================================================= */
+
+.journey-page .journey-card {
+    opacity: 1;
+}
+
+.journey-page .journey-item-left .journey-card,
+.journey-page .journey-item-right .journey-card {
+    transform: translate3d(0, 0, 0) scale(1);
+}
+
+/* Keep the existing reveal animation when JS adds the class. */
+.journey-page .journey-card.journey-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+}
+
+
+/* =========================================================
+   OPEN TO OPPORTUNITIES / CONTACT
+   ========================================================= */
+
+/* The Journey CTA moved here, so its bottom spacing can return to a normal section rhythm. */
+.journey-page {
+    padding-bottom: 48px;
+}
+
+.opportunity-page {
+    position: relative;
+    width: 100%;
+    padding: 28px 0 76px;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 10% 50%, rgba(0, 210, 185, 0.07), transparent 29%),
+        radial-gradient(circle at 92% 45%, rgba(0, 160, 210, 0.055), transparent 30%),
+        #020708;
+    isolation: isolate;
+}
+
+.opportunity-container {
+    position: relative;
+    z-index: 2;
+    width: min(1120px, 90%);
+    margin: 0 auto;
+}
+
+.opportunity-bg-glow {
+    position: absolute;
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    filter: blur(100px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.opportunity-bg-glow-left {
+    top: -180px;
+    left: -210px;
+    background: rgba(0, 220, 195, 0.09);
+}
+
+.opportunity-bg-glow-right {
+    right: -220px;
+    bottom: -210px;
+    background: rgba(0, 160, 225, 0.065);
+}
+
+.opportunity-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    padding: clamp(28px, 4vw, 45px);
+    overflow: hidden;
+    border: 1px solid #1a3036;
+    border-radius: 18px;
+    background:
+        linear-gradient(112deg, rgba(8, 21, 25, 0.97), rgba(3, 11, 15, 0.94));
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.02),
+        0 22px 60px rgba(0, 0, 0, 0.22),
+        0 0 45px rgba(16, 219, 194, 0.035);
+    transition:
+        opacity 0.75s ease,
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.opportunity-content::before {
+    content: "";
+    position: absolute;
+    top: -130px;
+    right: 9%;
+    width: 310px;
+    height: 310px;
+    border-radius: 50%;
+    background: rgba(21, 227, 193, 0.09);
+    filter: blur(75px);
+    pointer-events: none;
+}
+
+.opportunity-content:hover {
+    border-color: rgba(22, 227, 194, 0.33);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.025),
+        0 24px 65px rgba(0, 0, 0, 0.26),
+        0 0 50px rgba(16, 219, 194, 0.06);
+}
+
+.opportunity-copy,
+.opportunity-actions {
+    position: relative;
+    z-index: 1;
+}
+
+.opportunity-copy {
+    max-width: 670px;
+}
+
+.opportunity-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    margin-bottom: 12px;
+    color: #16e3c2;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2.8px;
+}
+
+.opportunity-label i {
+    width: 30px;
+    height: 1px;
+    background: #16e3c2;
+    box-shadow: 0 0 10px rgba(22, 227, 194, 0.5);
+}
+
+.opportunity-copy h2 {
+    max-width: 570px;
+    margin: 0;
+    color: #f1f6f7;
+    font-size: clamp(32px, 3.6vw, 48px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2px;
+}
+
+.opportunity-copy h2 em {
+    color: #16e3c2;
+    font-style: normal;
+}
+
+.opportunity-copy p {
+    max-width: 580px;
+    margin: 13px 0 0;
+    color: #82949b;
+    font-size: 14px;
+    line-height: 1.65;
+}
+
+.opportunity-actions {
+    flex-shrink: 0;
+}
+
+.opportunity-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 26px;
+    min-height: 48px;
+    padding: 0 20px;
+    border-radius: 8px;
+    background: linear-gradient(100deg, #08bdf0, #27df75);
+    color: #00110e;
+    font-size: 11px;
+    font-weight: 750;
+    box-shadow: 0 8px 26px rgba(22, 227, 194, 0.11);
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease;
+}
+
+.opportunity-button span {
+    font-size: 15px;
+    line-height: 1;
+}
+
+.opportunity-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 11px 30px rgba(22, 227, 194, 0.2);
+}
+
+.opportunity-button:focus-visible {
+    outline: 2px solid #7efcff;
+    outline-offset: 4px;
+}
+
+.opportunity-page.opportunity-ready .opportunity-content {
+    opacity: 0;
+    transform: translateY(18px);
+}
+
+.opportunity-page.opportunity-visible .opportunity-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   TESTIMONIALS
+   ========================================================= */
+
+.testimonials-page {
+    position: relative;
+    width: 100%;
+    padding: 78px 0 100px;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 12% 30%, rgba(0, 190, 170, 0.07), transparent 30%),
+        radial-gradient(circle at 88% 76%, rgba(0, 145, 185, 0.06), transparent 31%),
+        #020708;
+    isolation: isolate;
+}
+
+.testimonials-container {
+    position: relative;
+    z-index: 2;
+    width: min(1120px, 90%);
+    margin: 0 auto;
+}
+
+.testimonials-bg-glow {
+    position: absolute;
+    width: 440px;
+    height: 440px;
+    border-radius: 50%;
+    filter: blur(110px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.testimonials-bg-glow-left {
+    top: 12%;
+    left: -250px;
+    background: rgba(0, 220, 195, 0.08);
+}
+
+.testimonials-bg-glow-right {
+    right: -250px;
+    bottom: -100px;
+    background: rgba(0, 145, 210, 0.07);
+}
+
+.testimonials-stars {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.48;
+    pointer-events: none;
+    background-image:
+        radial-gradient(circle at 12% 16%, #fff 0 1px, transparent 1.5px),
+        radial-gradient(circle at 31% 68%, #7efcff 0 1px, transparent 1.5px),
+        radial-gradient(circle at 56% 11%, #fff 0 1px, transparent 1.5px),
+        radial-gradient(circle at 74% 46%, #fff 0 1px, transparent 1.5px),
+        radial-gradient(circle at 92% 76%, #7efcff 0 1px, transparent 1.5px);
+    background-size: 290px 250px, 360px 310px, 420px 350px, 330px 280px, 390px 340px;
+    animation: testimonialsStarsFloat 20s ease-in-out infinite alternate;
+}
+
+@keyframes testimonialsStarsFloat {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(4px, -3px, 0); }
+}
+
+.testimonials-heading {
+    max-width: 760px;
+    margin: 0 auto 44px;
+    text-align: center;
+    transition:
+        opacity 0.75s ease,
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.testimonials-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    color: #16e3c2;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3.4px;
+}
+
+.testimonials-label span {
+    width: 34px;
+    height: 1px;
+    background: #16e3c2;
+    box-shadow: 0 0 10px rgba(22, 227, 194, 0.45);
+}
+
+.testimonials-heading h2 {
+    margin: 0;
+    color: #f5f7f8;
+    font-size: clamp(38px, 4.3vw, 58px);
+    font-weight: 800;
+    line-height: 1.04;
+    letter-spacing: -2.4px;
+}
+
+.testimonials-heading h2 em {
+    color: #16e3c2;
+    font-style: normal;
+}
+
+.testimonials-heading p {
+    max-width: 590px;
+    margin: 15px auto 0;
+    color: #83949b;
+    font-size: 14px;
+    line-height: 1.65;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.testimonial-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 255px;
+    padding: 29px 30px 27px;
+    overflow: hidden;
+    border: 1px solid #172c33;
+    border-radius: 16px;
+    background:
+        linear-gradient(145deg, rgba(10, 21, 25, 0.96), rgba(4, 11, 15, 0.95));
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.018),
+        0 18px 46px rgba(0, 0, 0, 0.18);
+    transition:
+        opacity 0.6s ease,
+        transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 0.28s ease,
+        box-shadow 0.28s ease;
+}
+
+.testimonial-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(125deg, rgba(22, 227, 194, 0.06), transparent 38%);
+}
+
+.testimonial-card:hover {
+    border-color: rgba(22, 227, 194, 0.38);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.025),
+        0 22px 52px rgba(0, 0, 0, 0.24),
+        0 0 32px rgba(22, 227, 194, 0.06);
+    transform: translateY(-4px);
+}
+
+.testimonial-quote-mark,
+.testimonial-card blockquote,
+.testimonial-author {
+    position: relative;
+    z-index: 1;
+}
+
+.testimonial-quote-mark {
+    display: block;
+    height: 38px;
+    color: #16e3c2;
+    font-family: Georgia, serif;
+    font-size: 62px;
+    font-weight: 700;
+    line-height: 0.95;
+    text-shadow: 0 0 18px rgba(22, 227, 194, 0.2);
+}
+
+.testimonial-card blockquote {
+    max-width: 455px;
+    margin: 17px 0 auto;
+    color: #b2c0c4;
+    font-size: 14px;
+    font-style: normal;
+    line-height: 1.72;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.testimonial-avatar {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    flex: 0 0 42px;
+    place-items: center;
+    border: 1px solid rgba(22, 227, 194, 0.46);
+    border-radius: 50%;
+    background: linear-gradient(145deg, #0e3837, #092126);
+    color: #80fff0;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    box-shadow: 0 0 20px rgba(22, 227, 194, 0.11);
+}
+
+.testimonial-author h3 {
+    margin: 0 0 4px;
+    color: #edf3f4;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.testimonial-author p {
+    margin: 0;
+    color: #789096;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 0.7px;
+}
+
+.testimonials-page.testimonials-ready .testimonials-heading,
+.testimonials-page.testimonials-ready .testimonial-card {
+    opacity: 0;
+    transform: translateY(18px);
+}
+
+.testimonials-page.testimonials-visible .testimonials-heading,
+.testimonials-page.testimonials-visible .testimonial-card.testimonial-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.testimonials-page.testimonials-visible .testimonial-card.testimonial-visible:hover {
+    transform: translateY(-4px);
+}
+
+@media (max-width: 900px) {
+    .journey-page {
+        padding-bottom: 48px;
+    }
+
+    .opportunity-page {
+        padding-bottom: 66px;
+    }
+
+    .opportunity-content {
+        gap: 24px;
+        padding: 30px;
+    }
+
+    .testimonials-page {
+        padding: 68px 0 82px;
+    }
+
+    .testimonial-card {
+        min-height: 240px;
+        padding: 26px;
+    }
+}
+
+@media (max-width: 650px) {
+    .journey-page {
+        padding-bottom: 38px;
+    }
+
+    .opportunity-page {
+        padding: 24px 0 56px;
+    }
+
+    .opportunity-container,
+    .testimonials-container {
+        width: 90%;
+    }
+
+    .opportunity-content {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 22px;
+        padding: 25px 20px;
+        border-radius: 14px;
+    }
+
+    .opportunity-label {
+        margin-bottom: 10px;
+        font-size: 8px;
+        letter-spacing: 2.2px;
+    }
+
+    .opportunity-label i {
+        width: 22px;
+    }
+
+    .opportunity-copy h2 {
+        font-size: 31px;
+        letter-spacing: -1.25px;
+    }
+
+    .opportunity-copy p {
+        margin-top: 11px;
+        font-size: 11px;
+        line-height: 1.6;
+    }
+
+    .opportunity-button {
+        min-height: 44px;
+        padding: 0 17px;
+        font-size: 10px;
+    }
+
+    .testimonials-page {
+        padding: 62px 0 72px;
+    }
+
+    .testimonials-heading {
+        margin-bottom: 30px;
+    }
+
+    .testimonials-label {
+        gap: 8px;
+        margin-bottom: 10px;
+        font-size: 8px;
+        letter-spacing: 2.4px;
+    }
+
+    .testimonials-label span {
+        width: 22px;
+    }
+
+    .testimonials-heading h2 {
+        font-size: 33px;
+        letter-spacing: -1.35px;
+    }
+
+    .testimonials-heading p {
+        margin-top: 11px;
+        font-size: 11px;
+        line-height: 1.6;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .testimonial-card {
+        min-height: 220px;
+        padding: 23px 20px;
+        border-radius: 13px;
+    }
+
+    .testimonial-card blockquote {
+        margin-top: 14px;
+        font-size: 12px;
+        line-height: 1.65;
+    }
+
+    .testimonial-author {
+        margin-top: 22px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .opportunity-content,
+    .testimonials-stars,
+    .testimonials-heading,
+    .testimonial-card {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .opportunity-page.opportunity-ready .opportunity-content,
+    .testimonials-page.testimonials-ready .testimonials-heading,
+    .testimonials-page.testimonials-ready .testimonial-card {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
+
+/* =========================================================
+   FINAL CTA + TESTIMONIALS REFINEMENT
+   Reference-matched layout / spacing / particles
+   ========================================================= */
+
+/* Keep the Journey-to-CTA transition compact. */
+.journey-page {
+    padding-bottom: 28px;
+}
+
+/* ---------------------------------------------------------
+   GLOBAL SECTION PARTICLE LAYERS
+   --------------------------------------------------------- */
+
+.opportunity-stars,
+.journey-page .journey-stars,
+.testimonials-page .testimonials-stars,
+.skills-page .skills-stars,
+.featured-projects-page .projects-stars {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+    background: none !important;
+}
+
+.opportunity-stars {
+    opacity: 1;
+}
+
+/* Make the existing generated particles visible in every section. */
+.opportunity-page .star-particle,
+.journey-page .star-particle,
+.testimonials-page .star-particle,
+.skills-page .star-particle,
+.featured-projects-page .star-particle {
+    z-index: 0;
+}
+
+.journey-page .journey-container,
+.opportunity-page .opportunity-container,
+.testimonials-page .testimonials-container {
+    position: relative;
+    z-index: 2;
+}
+
+/* ---------------------------------------------------------
+   OPPORTUNITY CTA
+   --------------------------------------------------------- */
+
+.opportunity-page {
+    position: relative;
+    width: 100%;
+    padding: 22px 0 62px;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 8% 50%, rgba(0, 210, 185, 0.07), transparent 28%),
+        radial-gradient(circle at 92% 45%, rgba(0, 160, 210, 0.05), transparent 30%),
+        #020708;
+    isolation: isolate;
+}
+
+.opportunity-container {
+    width: min(1120px, 90%);
+    margin: 0 auto;
+}
+
+.opportunity-content {
+    min-height: 190px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 36px;
+    padding: 30px 40px;
+    overflow: hidden;
+    border: 1px solid rgba(80, 119, 126, 0.24);
+    border-radius: 17px;
+    background:
+        linear-gradient(112deg, rgba(8, 21, 25, 0.96), rgba(3, 11, 15, 0.94));
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.025),
+        0 20px 55px rgba(0,0,0,0.22),
+        0 0 45px rgba(16,219,194,0.035);
+    transition:
+        opacity 0.75s ease,
+        transform 0.8s cubic-bezier(0.22,1,0.36,1),
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.opportunity-content::before {
+    content: "";
+    position: absolute;
+    top: -120px;
+    right: 8%;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: rgba(21,227,193,0.08);
+    filter: blur(78px);
+    pointer-events: none;
+}
+
+.opportunity-copy,
+.opportunity-actions {
+    position: relative;
+    z-index: 1;
+}
+
+.opportunity-copy {
+    max-width: 700px;
+}
+
+.opportunity-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    color: #16e3c2;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2.8px;
+}
+
+.opportunity-label i {
+    width: 30px;
+    height: 1px;
+    background: #16e3c2;
+    box-shadow: 0 0 10px rgba(22,227,194,0.5);
+}
+
+.opportunity-copy h2 {
+    max-width: 700px;
+    margin: 0;
+    color: #f1f6f7;
+    font-size: clamp(29px, 3vw, 43px);
+    font-weight: 800;
+    line-height: 1.06;
+    letter-spacing: -1.8px;
+}
+
+.opportunity-copy h2 em {
+    color: #16e3c2;
+    font-style: normal;
+}
+
+.opportunity-copy p {
+    margin: 11px 0 0;
+    color: #82949b;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.opportunity-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    min-height: 46px;
+    padding: 0 20px;
+    border-radius: 8px;
+    background: linear-gradient(100deg, #08bdf0, #27df75);
+    color: #00110e;
+    font-size: 11px;
+    font-weight: 750;
+    box-shadow: 0 8px 26px rgba(22,227,194,0.11);
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.opportunity-button span {
+    font-size: 15px;
+}
+
+.opportunity-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 11px 30px rgba(22,227,194,0.2);
+}
+
+/* ---------------------------------------------------------
+   TESTIMONIALS
+   --------------------------------------------------------- */
+
+.testimonials-page {
+    position: relative;
+    width: 100%;
+    padding: 64px 0 88px;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 12% 30%, rgba(0,190,170,0.065), transparent 30%),
+        radial-gradient(circle at 88% 76%, rgba(0,145,185,0.055), transparent 31%),
+        #020708;
+    isolation: isolate;
+}
+
+.testimonials-heading {
+    max-width: 760px;
+    margin: 0 auto 38px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+        opacity 0.75s ease,
+        transform 0.8s cubic-bezier(0.22,1,0.36,1);
+}
+
+.testimonials-page.testimonials-visible .testimonials-heading {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.testimonials-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+    color: #16e3c2;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3.2px;
+}
+
+.testimonials-label span {
+    width: 34px;
+    height: 1px;
+    background: #16e3c2;
+    box-shadow: 0 0 10px rgba(22,227,194,0.45);
+}
+
+.testimonials-heading h2 {
+    margin: 0;
+    color: #f5f7f8;
+    font-size: clamp(35px, 4vw, 52px);
+    font-weight: 800;
+    line-height: 1.04;
+    letter-spacing: -2px;
+}
+
+.testimonials-heading h2 em {
+    color: #16e3c2;
+    font-style: normal;
+}
+
+.testimonials-heading p {
+    margin: 12px auto 0;
+    color: #83949b;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.testimonial-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 224px;
+    padding: 25px 27px 23px;
+    overflow: hidden;
+    border: 1px solid rgba(70,89,110,0.27);
+    border-radius: 15px;
+    background:
+        linear-gradient(145deg, rgba(12,17,29,0.96), rgba(5,9,17,0.95));
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.018),
+        0 18px 46px rgba(0,0,0,0.18);
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+        opacity 0.6s ease,
+        transform 0.65s cubic-bezier(0.22,1,0.36,1),
+        border-color 0.28s ease,
+        box-shadow 0.28s ease;
+}
+
+.testimonial-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background:
+        linear-gradient(125deg, rgba(75,70,170,0.07), transparent 40%),
+        radial-gradient(circle at 90% 10%, rgba(22,227,194,0.045), transparent 30%);
+}
+
+.testimonial-card.testimonial-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.testimonial-card.testimonial-visible:hover {
+    transform: translateY(-4px);
+    border-color: rgba(22,227,194,0.34);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.025),
+        0 22px 52px rgba(0,0,0,0.24),
+        0 0 32px rgba(22,227,194,0.06);
+}
+
+.testimonial-quote-mark,
+.testimonial-card blockquote,
+.testimonial-author {
+    position: relative;
+    z-index: 1;
+}
+
+.testimonial-quote-mark {
+    display: block;
+    height: 31px;
+    color: #16e3c2;
+    font-family: Georgia, serif;
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 0.8;
+    text-shadow: 0 0 18px rgba(22,227,194,0.2);
+}
+
+.testimonial-card blockquote {
+    margin: 13px 0 auto;
+    color: #aebbc0;
+    font-size: 12.5px;
+    font-style: normal;
+    line-height: 1.7;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    margin-top: 22px;
+}
+
+.testimonial-avatar {
+    width: 39px;
+    height: 39px;
+    display: grid;
+    flex: 0 0 39px;
+    place-items: center;
+    border: 1px solid rgba(22,227,194,0.42);
+    border-radius: 50%;
+    background: linear-gradient(145deg, #153938, #0a2225);
+    color: #80fff0;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px;
+    font-weight: 700;
+    box-shadow: 0 0 20px rgba(22,227,194,0.09);
+}
+
+.testimonial-author h3 {
+    margin: 0 0 3px;
+    color: #edf3f4;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.testimonial-author p {
+    margin: 0;
+    color: #789096;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 7.5px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+}
+
+/* Reveal fallback */
+@media (prefers-reduced-motion: reduce) {
+    .opportunity-content,
+    .testimonials-heading,
+    .testimonial-card,
+    .star-particle {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .opportunity-page.opportunity-ready .opportunity-content,
+    .testimonials-page.testimonials-ready .testimonials-heading,
+    .testimonials-page.testimonials-ready .testimonial-card {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+    .opportunity-page {
+        padding: 20px 0 56px;
+    }
+
+    .opportunity-content {
+        min-height: 175px;
+        padding: 28px 30px;
+        gap: 26px;
+    }
+
+    .opportunity-copy h2 {
+        font-size: clamp(28px, 4.4vw, 39px);
+    }
+
+    .testimonials-page {
+        padding: 58px 0 76px;
+    }
+
+    .testimonials-heading {
+        margin-bottom: 32px;
+    }
+
+    .testimonial-card {
+        min-height: 215px;
+        padding: 23px 24px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 650px) {
+    .journey-page {
+        padding-bottom: 20px;
+    }
+
+    .opportunity-page {
+        padding: 18px 0 46px;
+    }
+
+    .opportunity-container,
+    .testimonials-container {
+        width: 90%;
+    }
+
+    .opportunity-content {
+        min-height: 0;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 18px;
+        padding: 23px 20px;
+        border-radius: 14px;
+    }
+
+    .opportunity-label {
+        margin-bottom: 8px;
+        font-size: 8px;
+        letter-spacing: 2.1px;
+    }
+
+    .opportunity-label i {
+        width: 22px;
+    }
+
+    .opportunity-copy h2 {
+        font-size: 29px;
+        letter-spacing: -1.2px;
+    }
+
+    .opportunity-copy p {
+        margin-top: 10px;
+        font-size: 11px;
+    }
+
+    .opportunity-button {
+        min-height: 43px;
+        padding: 0 17px;
+        font-size: 10px;
+    }
+
+    .testimonials-page {
+        padding: 54px 0 64px;
+    }
+
+    .testimonials-heading {
+        margin-bottom: 28px;
+    }
+
+    .testimonials-label {
+        gap: 8px;
+        margin-bottom: 9px;
+        font-size: 8px;
+        letter-spacing: 2.2px;
+    }
+
+    .testimonials-label span {
+        width: 22px;
+    }
+
+    .testimonials-heading h2 {
+        font-size: 32px;
+        letter-spacing: -1.25px;
+    }
+
+    .testimonials-heading p {
+        margin-top: 10px;
+        font-size: 11px;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .testimonial-card {
+        min-height: 0;
+        padding: 22px 20px;
+        border-radius: 13px;
+    }
+
+    .testimonial-card blockquote {
+        margin-top: 12px;
+        font-size: 12px;
+        line-height: 1.65;
+    }
+
+    .testimonial-author {
+        margin-top: 20px;
+    }
+}
+
+
+/* =========================================================
+   FINAL — JOURNEY → OPPORTUNITY TRANSITION
+   Make the CTA feel like the natural ending of My Journey,
+   not a separate hero section.
+   ========================================================= */
+
+/* Bring the CTA closer to the end of the timeline. */
+.journey-page {
+    padding-bottom: 10px;
+}
+
+.opportunity-page {
+    padding: 8px 0 54px;
+}
+
+.opportunity-container {
+    width: min(1120px, 90%);
+}
+
+/* Smaller, quieter CTA card. */
+.opportunity-content {
+    min-height: 150px;
+    gap: 30px;
+    padding: 25px 34px;
+    border-radius: 15px;
+    background:
+        linear-gradient(
+            112deg,
+            rgba(8, 21, 25, 0.92),
+            rgba(3, 11, 15, 0.88)
+        );
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.02),
+        0 16px 42px rgba(0,0,0,0.18),
+        0 0 35px rgba(16,219,194,0.025);
+}
+
+.opportunity-copy {
+    max-width: 650px;
+}
+
+.opportunity-label {
+    margin-bottom: 8px;
+    font-size: 8px;
+    letter-spacing: 2.6px;
+}
+
+.opportunity-label i {
+    width: 27px;
+}
+
+.opportunity-copy h2 {
+    max-width: 650px;
+    font-size: clamp(27px, 2.45vw, 35px);
+    line-height: 1.08;
+    letter-spacing: -1.35px;
+}
+
+.opportunity-copy p {
+    margin-top: 9px;
+    font-size: 12px;
+    line-height: 1.55;
+}
+
+.opportunity-button {
+    min-height: 43px;
+    padding: 0 18px;
+    gap: 20px;
+    border-radius: 8px;
+    font-size: 10px;
+}
+
+.opportunity-button span {
+    font-size: 14px;
+}
+
+/* Slight visual bridge from Journey into the CTA. */
+.opportunity-page::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 22px;
+    background: linear-gradient(
+        to bottom,
+        rgba(22,227,194,0.65),
+        rgba(22,227,194,0)
+    );
+    box-shadow: 0 0 10px rgba(22,227,194,0.18);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Keep Testimonials clearly separated, but not with a huge gap. */
+.testimonials-page {
+    padding-top: 48px;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+    .journey-page {
+        padding-bottom: 8px;
+    }
+
+    .opportunity-page {
+        padding: 7px 0 48px;
+    }
+
+    .opportunity-content {
+        min-height: 140px;
+        gap: 24px;
+        padding: 23px 28px;
+    }
+
+    .opportunity-copy h2 {
+        font-size: clamp(26px, 3.7vw, 33px);
+    }
+
+    .opportunity-copy p {
+        font-size: 11px;
+    }
+
+    .testimonials-page {
+        padding-top: 44px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 650px) {
+    .journey-page {
+        padding-bottom: 4px;
+    }
+
+    .opportunity-page {
+        padding: 5px 0 40px;
+    }
+
+    .opportunity-page::before {
+        height: 16px;
+    }
+
+    .opportunity-content {
+        min-height: 0;
+        gap: 16px;
+        padding: 21px 19px;
+        border-radius: 13px;
+    }
+
+    .opportunity-label {
+        margin-bottom: 7px;
+        font-size: 7.5px;
+        letter-spacing: 2px;
+    }
+
+    .opportunity-label i {
+        width: 21px;
+    }
+
+    .opportunity-copy h2 {
+        max-width: 100%;
+        font-size: 27px;
+        line-height: 1.08;
+        letter-spacing: -1.1px;
+    }
+
+    .opportunity-copy p {
+        margin-top: 9px;
+        font-size: 10.5px;
+    }
+
+    .opportunity-button {
+        min-height: 42px;
+        padding: 0 16px;
+        font-size: 9.5px;
+    }
+
+    .testimonials-page {
+        padding-top: 40px;
+    }
+}
+
+/* =========================================================
+   FINAL — OPPORTUNITY LIVES INSIDE MY JOURNEY
+   ========================================================= */
+
+/* The CTA is now part of the same Journey section. */
+.journey-page > .opportunity-page {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0 0 42px;
+    overflow: hidden;
+    background: transparent;
+    isolation: auto;
+}
+
+/* Continue the Journey timeline naturally down into the CTA. */
+.journey-page > .opportunity-page::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 34px;
+    transform: translateX(-50%);
+    background: linear-gradient(
+        to bottom,
+        #16e3c2,
+        rgba(22, 227, 194, 0.35)
+    );
+    box-shadow:
+        0 0 10px rgba(22, 227, 194, 0.42),
+        0 0 20px rgba(22, 227, 194, 0.14);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.journey-page > .opportunity-page .opportunity-container {
+    position: relative;
+    z-index: 2;
+    width: min(1120px, 90%);
+    margin: 0 auto;
+    padding-top: 34px;
+}
+
+/* Same background as Journey because this is now visually one section. */
+.journey-page > .opportunity-page .opportunity-content {
+    min-height: 0;
+    padding: 27px 40px;
+    border-radius: 16px;
+    background:
+        linear-gradient(112deg, rgba(8, 21, 25, 0.96), rgba(3, 11, 15, 0.94));
+}
+
+.journey-page > .opportunity-page .opportunity-copy {
+    max-width: 700px;
+}
+
+.journey-page > .opportunity-page .opportunity-copy h2 {
+    max-width: 680px;
+    font-size: clamp(28px, 2.75vw, 38px);
+    line-height: 1.08;
+    letter-spacing: -1.55px;
+}
+
+.journey-page > .opportunity-page .opportunity-label {
+    margin-bottom: 9px;
+}
+
+.journey-page > .opportunity-page .opportunity-copy p {
+    margin-top: 9px;
+    font-size: 13px;
+}
+
+.journey-page > .opportunity-page .opportunity-button {
+    min-height: 44px;
+    padding: 0 19px;
+    gap: 22px;
+}
+
+/* Hide the CTA's own full-section decorative background layers.
+   Journey already supplies the background and stars. */
+.journey-page > .opportunity-page .opportunity-stars,
+.journey-page > .opportunity-page .opportunity-bg-glow {
+    display: none;
+}
+
+@media (max-width: 900px) {
+    .journey-page > .opportunity-page {
+        padding-bottom: 38px;
+    }
+
+    .journey-page > .opportunity-page::before {
+        height: 28px;
+    }
+
+    .journey-page > .opportunity-page .opportunity-container {
+        padding-top: 28px;
+    }
+
+    .journey-page > .opportunity-page .opportunity-content {
+        padding: 25px 30px;
+    }
+}
+
+@media (max-width: 650px) {
+    .journey-page > .opportunity-page {
+        padding-bottom: 34px;
+    }
+
+    .journey-page > .opportunity-page::before {
+        height: 22px;
+    }
+
+    .journey-page > .opportunity-page .opportunity-container {
+        padding-top: 22px;
+    }
+
+    .journey-page > .opportunity-page .opportunity-content {
+        padding: 21px 20px;
+        border-radius: 14px;
+    }
+
+    .journey-page > .opportunity-page .opportunity-copy h2 {
+        font-size: 27px;
+        line-height: 1.08;
+        letter-spacing: -1.1px;
+    }
+}
+
+
+/* =========================================================
+   FINAL PAGE — LET'S WORK TOGETHER
+   Reference-matched contact page
+   ========================================================= */
+
+.final-contact-page {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 88px 0 96px;
+    overflow: hidden;
+    isolation: isolate;
+    background:
+        radial-gradient(circle at 22% 52%, rgba(55, 20, 160, 0.10), transparent 30%),
+        radial-gradient(circle at 78% 48%, rgba(80, 20, 180, 0.08), transparent 30%),
+        #000;
+}
+
+.final-contact-stars,
+.final-contact-art-stars {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        radial-gradient(circle at 8% 18%, rgba(255,255,255,.85) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 19% 72%, rgba(139,125,255,.7) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 36% 28%, rgba(255,255,255,.65) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 54% 76%, rgba(255,255,255,.75) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 73% 19%, rgba(178,160,255,.75) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 92% 61%, rgba(255,255,255,.7) 0 1px, transparent 1.5px);
+    background-size: 280px 230px, 340px 290px, 390px 330px, 310px 270px, 420px 350px, 360px 310px;
+    opacity: .45;
+    animation: finalContactStarsFloat 20s ease-in-out infinite alternate;
+    z-index: 0;
+}
+
+@keyframes finalContactStarsFloat {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(4px, -3px, 0); }
+}
+
+.final-contact-glow {
+    position: absolute;
+    width: 430px;
+    height: 430px;
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.final-contact-glow-left {
+    left: -230px;
+    top: 24%;
+    background: rgba(78, 35, 210, .10);
+}
+
+.final-contact-glow-right {
+    right: -240px;
+    bottom: 8%;
+    background: rgba(107, 31, 226, .10);
+}
+
+.final-contact-container {
+    position: relative;
+    z-index: 2;
+    width: min(1080px, 90%);
+    min-height: 620px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(390px, 500px);
+    align-items: center;
+    gap: 54px;
+}
+
+/* Left space/astronaut side */
+.final-contact-art {
+    position: relative;
+    min-height: 570px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+}
+
+.final-contact-art-stars {
+    inset: 7% 0 5% 0;
+    opacity: .70;
+    background-size: 170px 145px, 210px 180px, 250px 205px, 195px 170px, 280px 230px, 230px 200px;
+}
+
+.final-contact-astronaut {
+    position: relative;
+    z-index: 3;
+    width: min(470px, 92%);
+    height: auto;
+    display: block;
+    object-fit: contain;
+    mix-blend-mode: screen;
+    filter:
+        drop-shadow(0 0 18px rgba(87, 74, 255, .20))
+        drop-shadow(0 0 42px rgba(87, 74, 255, .11));
+    animation: finalAstronautFloat 5.2s ease-in-out infinite;
+}
+
+@keyframes finalAstronautFloat {
+    0%, 100% { transform: translate3d(0, 0, 0) rotate(-1deg); }
+    50% { transform: translate3d(0, -10px, 0) rotate(1deg); }
+}
+
+.final-contact-orbit {
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    top: 51%;
+    width: 410px;
+    height: 165px;
+    border: 1px solid rgba(108, 82, 255, .15);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) rotate(-18deg);
+    filter: blur(.2px);
+}
+
+.final-contact-orbit::after {
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    right: 12%;
+    top: 10%;
+    border-radius: 50%;
+    background: #8b79ff;
+    box-shadow: 0 0 12px #8b79ff;
+}
+
+.final-contact-orbit.orbit-b {
+    width: 330px;
+    height: 125px;
+    border-color: rgba(35, 175, 255, .12);
+    transform: translate(-50%, -50%) rotate(27deg);
+}
+
+.final-contact-orbit.orbit-b::after {
+    right: auto;
+    left: 8%;
+    top: 22%;
+    background: #35d6ff;
+    box-shadow: 0 0 12px #35d6ff;
+}
+
+/* Right form card */
+.final-contact-card {
+    position: relative;
+    width: 100%;
+    padding: 30px 31px 29px;
+    overflow: hidden;
+    border: 1px solid rgba(103, 77, 160, .22);
+    border-radius: 12px;
+    background:
+        linear-gradient(145deg, rgba(15, 13, 23, .98), rgba(7, 7, 13, .97));
+    box-shadow:
+        0 24px 70px rgba(0,0,0,.46),
+        inset 0 1px 0 rgba(255,255,255,.025),
+        0 0 55px rgba(82, 39, 210, .055);
+}
+
+.final-contact-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(135deg, rgba(104, 65, 255, .07), transparent 34%, transparent 70%, rgba(40, 105, 255, .025));
+}
+
+.final-contact-card-glow {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    right: -100px;
+    top: -90px;
+    border-radius: 50%;
+    background: rgba(102, 56, 255, .12);
+    filter: blur(55px);
+    pointer-events: none;
+}
+
+.final-contact-heading,
+.final-contact-form {
+    position: relative;
+    z-index: 2;
+}
+
+.final-contact-heading h2 {
+    margin: 0;
+    color: #f4f1ff;
+    font-size: clamp(25px, 2.5vw, 32px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -1.2px;
+}
+
+.final-contact-heading p {
+    margin: 8px 0 0;
+    color: #6f6b79;
+    font-size: 10px;
+    line-height: 1.45;
+}
+
+.final-contact-form {
+    margin-top: 22px;
+    display: grid;
+    gap: 13px;
+}
+
+.final-contact-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 11px;
+}
+
+.final-contact-form label {
+    display: grid;
+    gap: 7px;
+    min-width: 0;
+}
+
+.final-contact-form label > span {
+    color: #817a8d;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: 1.7px;
+}
+
+.final-contact-form label > span b {
+    color: #a875ff;
+    font-weight: 700;
+}
+
+.final-contact-form input,
+.final-contact-form select,
+.final-contact-form textarea {
+    width: 100%;
+    border: 1px solid rgba(74, 67, 91, .42);
+    border-radius: 6px;
+    outline: none;
+    background: rgba(19, 17, 28, .88);
+    color: #e8e4ef;
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 10px;
+    transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.final-contact-form input,
+.final-contact-form select {
+    height: 40px;
+    padding: 0 12px;
+}
+
+.final-contact-form textarea {
+    min-height: 105px;
+    padding: 11px 12px;
+    resize: vertical;
+    line-height: 1.5;
+}
+
+.final-contact-form input::placeholder,
+.final-contact-form textarea::placeholder {
+    color: #45424d;
+}
+
+.final-contact-form select {
+    color: #c9c4d2;
+    appearance: auto;
+}
+
+.final-contact-form select:invalid {
+    color: #45424d;
+}
+
+.final-contact-form input:focus,
+.final-contact-form select:focus,
+.final-contact-form textarea:focus {
+    border-color: rgba(121, 78, 255, .72);
+    background: rgba(22, 19, 34, .96);
+    box-shadow: 0 0 0 3px rgba(102, 65, 255, .08), 0 0 22px rgba(91, 48, 220, .07);
+}
+
+.final-contact-submit {
+    width: 100%;
+    min-height: 41px;
+    margin-top: 2px;
+    border: 0;
+    border-radius: 7px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: linear-gradient(100deg, #5d22ff 0%, #8128ff 55%, #6c24ff 100%);
+    color: #fff;
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    box-shadow: 0 0 22px rgba(104, 35, 255, .24);
+    transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+
+.final-contact-submit:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+    box-shadow: 0 0 30px rgba(104, 35, 255, .34);
+}
+
+.final-contact-submit:active {
+    transform: translateY(0);
+}
+
+.final-contact-submit span {
+    font-size: 13px;
+    line-height: 1;
+}
+
+.final-contact-status {
+    min-height: 0;
+    margin: -2px 0 0;
+    color: #8c7cff;
+    font-size: 9px;
+    text-align: center;
+}
+
+@media (max-width: 900px) {
+    .final-contact-page {
+        min-height: auto;
+        padding: 70px 0 78px;
+    }
+
+    .final-contact-container {
+        min-height: 0;
+        grid-template-columns: 1fr;
+        gap: 25px;
+        width: min(620px, 90%);
+    }
+
+    .final-contact-art {
+        min-height: 330px;
+    }
+
+    .final-contact-astronaut {
+        width: min(360px, 78%);
+    }
+
+    .final-contact-orbit {
+        width: 330px;
+        height: 135px;
+    }
+
+    .final-contact-orbit.orbit-b {
+        width: 270px;
+        height: 105px;
+    }
+
+    .final-contact-card {
+        padding: 28px 27px;
+    }
+}
+
+@media (max-width: 650px) {
+    .final-contact-page {
+        padding: 55px 0 62px;
+    }
+
+    .final-contact-container {
+        width: 90%;
+        gap: 12px;
+    }
+
+    .final-contact-art {
+        min-height: 255px;
+    }
+
+    .final-contact-astronaut {
+        width: min(300px, 92%);
+    }
+
+    .final-contact-orbit {
+        width: 275px;
+        height: 110px;
+    }
+
+    .final-contact-orbit.orbit-b {
+        width: 225px;
+        height: 88px;
+    }
+
+    .final-contact-card {
+        padding: 23px 18px 20px;
+        border-radius: 11px;
+    }
+
+    .final-contact-heading h2 {
+        font-size: 25px;
+    }
+
+    .final-contact-heading p {
+        font-size: 9px;
+    }
+
+    .final-contact-form {
+        margin-top: 19px;
+        gap: 12px;
+    }
+
+    .final-contact-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .final-contact-form input,
+    .final-contact-form select {
+        height: 39px;
+    }
+
+    .final-contact-form textarea {
+        min-height: 105px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .final-contact-stars,
+    .final-contact-art-stars,
+    .final-contact-astronaut {
+        animation: none;
+    }
+}
+
+
+/* =========================================================
+   FINAL CONTACT — POLISH V2
+   - tighter one-screen desktop layout
+   - more visible floating / twinkling stars
+   - smoother astronaut motion
+   - stronger space atmosphere
+   - keeps mobile content fully usable
+   ========================================================= */
+
+/* Desktop: make the final contact page fit exactly in one viewport */
+.final-contact-page {
+    height: 100svh;
+    min-height: 100svh;
+    padding: 24px 0;
+    overflow: hidden;
+}
+
+/* Make the background stars feel alive instead of almost static */
+.final-contact-stars {
+    opacity: .58;
+    background-size:
+        220px 185px,
+        285px 245px,
+        335px 285px,
+        270px 225px,
+        365px 300px,
+        315px 270px;
+    animation:
+        contactStarsFloat 9s ease-in-out infinite alternate,
+        contactStarsTwinkle 4.5s ease-in-out infinite;
+}
+
+.final-contact-art-stars {
+    opacity: .88;
+    background-size:
+        135px 118px,
+        175px 150px,
+        205px 175px,
+        160px 138px,
+        230px 195px,
+        190px 165px;
+    animation:
+        contactArtStarsFloat 7s ease-in-out infinite alternate,
+        contactArtStarsTwinkle 3.8s ease-in-out infinite;
+}
+
+@keyframes contactStarsFloat {
+    0% {
+        transform: translate3d(-3px, 2px, 0) scale(1);
+    }
+    50% {
+        transform: translate3d(5px, -5px, 0) scale(1.012);
+    }
+    100% {
+        transform: translate3d(-6px, 4px, 0) scale(1);
+    }
+}
+
+@keyframes contactArtStarsFloat {
+    0% {
+        transform: translate3d(-5px, 3px, 0) scale(1);
+    }
+    50% {
+        transform: translate3d(7px, -6px, 0) scale(1.018);
+    }
+    100% {
+        transform: translate3d(-8px, 5px, 0) scale(1);
+    }
+}
+
+@keyframes contactStarsTwinkle {
+    0%, 100% {
+        opacity: .40;
+    }
+    28% {
+        opacity: .62;
+    }
+    55% {
+        opacity: .48;
+    }
+    78% {
+        opacity: .68;
+    }
+}
+
+@keyframes contactArtStarsTwinkle {
+    0%, 100% {
+        opacity: .62;
+    }
+    30% {
+        opacity: .92;
+    }
+    52% {
+        opacity: .72;
+    }
+    78% {
+        opacity: 1;
+    }
+}
+
+/* More cinematic purple atmosphere */
+.final-contact-page {
+    background:
+        radial-gradient(
+            ellipse 520px 430px at 24% 50%,
+            rgba(73, 31, 205, .15),
+            transparent 68%
+        ),
+        radial-gradient(
+            ellipse 500px 430px at 79% 48%,
+            rgba(91, 28, 218, .12),
+            transparent 70%
+        ),
+        radial-gradient(
+            ellipse 900px 420px at 50% 105%,
+            rgba(41, 12, 100, .12),
+            transparent 72%
+        ),
+        #000;
+}
+
+/* Keep the content comfortably inside the viewport */
+.final-contact-container {
+    width: min(1160px, 91%);
+    height: calc(100svh - 48px);
+    min-height: 0;
+    grid-template-columns: minmax(0, 1fr) minmax(430px, 520px);
+    gap: 62px;
+}
+
+/* Left visual gets a cleaner, more intentional stage */
+.final-contact-art {
+    min-height: 0;
+    height: 100%;
+}
+
+.final-contact-art::before {
+    content: "";
+    position: absolute;
+    width: 470px;
+    height: 470px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(71, 43, 210, .13) 0%,
+        rgba(50, 30, 150, .07) 34%,
+        transparent 70%
+    );
+    filter: blur(18px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Slightly larger astronaut, but still contained */
+.final-contact-astronaut {
+    width: min(500px, 96%);
+    filter:
+        drop-shadow(0 0 20px rgba(87, 74, 255, .24))
+        drop-shadow(0 0 55px rgba(87, 74, 255, .14))
+        drop-shadow(0 0 90px rgba(56, 30, 180, .08));
+    animation: finalAstronautFloatV2 5.2s ease-in-out infinite;
+}
+
+@keyframes finalAstronautFloatV2 {
+    0%, 100% {
+        transform: translate3d(0, 4px, 0) rotate(-1deg);
+    }
+    50% {
+        transform: translate3d(4px, -14px, 0) rotate(1.2deg);
+    }
+}
+
+/* Larger, softer orbit rings */
+.final-contact-orbit {
+    width: 455px;
+    height: 180px;
+    border-color: rgba(116, 86, 255, .19);
+    box-shadow: 0 0 25px rgba(87, 63, 220, .05);
+}
+
+.final-contact-orbit.orbit-b {
+    width: 365px;
+    height: 140px;
+    border-color: rgba(43, 182, 255, .15);
+}
+
+/* Give the form a more premium glass-panel look */
+.final-contact-card {
+    padding: 34px 34px 31px;
+    border-color: rgba(116, 87, 180, .28);
+    border-radius: 14px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(18, 15, 30, .985),
+            rgba(7, 7, 14, .975)
+        );
+    box-shadow:
+        0 28px 80px rgba(0, 0, 0, .52),
+        inset 0 1px 0 rgba(255, 255, 255, .035),
+        0 0 70px rgba(82, 39, 210, .075);
+}
+
+.final-contact-card::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(151, 111, 255, .55),
+        transparent
+    );
+    pointer-events: none;
+}
+
+.final-contact-heading h2 {
+    font-size: clamp(28px, 2.5vw, 35px);
+    letter-spacing: -1.45px;
+}
+
+.final-contact-heading p {
+    margin-top: 9px;
+    color: #777181;
+    font-size: 10.5px;
+}
+
+/* Slightly roomier fields */
+.final-contact-form {
+    margin-top: 24px;
+    gap: 14px;
+}
+
+.final-contact-form label {
+    gap: 7px;
+}
+
+.final-contact-form label > span {
+    font-size: 7.5px;
+    letter-spacing: 1.9px;
+}
+
+.final-contact-form input,
+.final-contact-form select {
+    height: 42px;
+    padding: 0 13px;
+}
+
+.final-contact-form textarea {
+    min-height: 112px;
+    padding: 12px 13px;
+}
+
+.final-contact-submit {
+    min-height: 45px;
+    margin-top: 3px;
+    border-radius: 8px;
+    font-size: 10.5px;
+    background:
+        linear-gradient(
+            100deg,
+            #5d20ff 0%,
+            #7b27ff 48%,
+            #922dff 100%
+        );
+    box-shadow:
+        0 0 24px rgba(104, 35, 255, .28),
+        inset 0 1px 0 rgba(255,255,255,.10);
+}
+
+.final-contact-submit:hover {
+    box-shadow:
+        0 0 36px rgba(104, 35, 255, .40),
+        inset 0 1px 0 rgba(255,255,255,.12);
+}
+
+/* Tablet/mobile must remain scrollable because the form stacks */
+@media (max-width: 900px) {
+    .final-contact-page {
+        height: auto;
+        min-height: auto;
+        padding: 58px 0 72px;
+        overflow: hidden;
+    }
+
+    .final-contact-container {
+        width: min(650px, 90%);
+        height: auto;
+        min-height: 0;
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .final-contact-art {
+        min-height: 340px;
+        height: 340px;
+    }
+
+    .final-contact-astronaut {
+        width: min(380px, 82%);
+    }
+}
+
+@media (max-width: 650px) {
+    .final-contact-page {
+        padding: 48px 0 58px;
+    }
+
+    .final-contact-container {
+        width: 90%;
+        gap: 16px;
+    }
+
+    .final-contact-art {
+        min-height: 270px;
+        height: 270px;
+    }
+
+    .final-contact-astronaut {
+        width: min(315px, 94%);
+    }
+
+    .final-contact-orbit {
+        width: 285px;
+        height: 112px;
+    }
+
+    .final-contact-orbit.orbit-b {
+        width: 235px;
+        height: 90px;
+    }
+
+    .final-contact-card {
+        padding: 24px 19px 21px;
+    }
+
+    .final-contact-heading h2 {
+        font-size: 25px;
+    }
+
+    .final-contact-form {
+        margin-top: 20px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .final-contact-stars,
+    .final-contact-art-stars,
+    .final-contact-astronaut {
+        animation: none;
+    }
+}
+
+
+/* =========================================================
+   CONTACT V3 — TRUE FLOATING ASTRONAUT
+   Remove the "image placed on a square" feeling.
+   The astronaut asset uses transparency + layered motion.
+   ========================================================= */
+
+/* The extracted astronaut artwork is transparent now, so
+   let the real page background show through completely. */
+.final-contact-astronaut {
+    width: min(500px, 96%);
+    height: auto;
+    background: transparent;
+    border: 0;
+    mix-blend-mode: normal;
+    isolation: auto;
+
+    filter:
+        drop-shadow(0 0 16px rgba(92, 76, 255, .22))
+        drop-shadow(0 0 38px rgba(75, 55, 220, .15))
+        drop-shadow(0 18px 35px rgba(0, 0, 0, .32));
+
+    animation: contactAstronautDrift 6.5s ease-in-out infinite;
+    will-change: transform;
+}
+
+@keyframes contactAstronautDrift {
+    0%, 100% {
+        transform:
+            translate3d(0, 7px, 0)
+            rotate(-1.1deg)
+            scale(1);
+    }
+
+    25% {
+        transform:
+            translate3d(8px, -3px, 0)
+            rotate(.4deg)
+            scale(1.012);
+    }
+
+    50% {
+        transform:
+            translate3d(3px, -17px, 0)
+            rotate(1.1deg)
+            scale(1.018);
+    }
+
+    75% {
+        transform:
+            translate3d(-7px, -5px, 0)
+            rotate(.1deg)
+            scale(1.008);
+    }
+}
+
+/* Remove any visual "photo frame" around the artwork. */
+.final-contact-art {
+    background: transparent !important;
+}
+
+.final-contact-art::before {
+    width: 560px;
+    height: 560px;
+    background:
+        radial-gradient(
+            circle,
+            rgba(77, 54, 230, .13) 0%,
+            rgba(63, 42, 185, .065) 32%,
+            transparent 70%
+        );
+    filter: blur(24px);
+    opacity: .9;
+}
+
+/* Space depth: independent tiny particles behind the astronaut. */
+.final-contact-art-stars {
+    opacity: .82;
+    transform-origin: center;
+    animation:
+        contactArtStarsFloatV3 11s ease-in-out infinite alternate,
+        contactArtStarsTwinkleV3 4.2s ease-in-out infinite;
+}
+
+@keyframes contactArtStarsFloatV3 {
+    0% {
+        transform: translate3d(-8px, 5px, 0) scale(1);
+    }
+    50% {
+        transform: translate3d(5px, -8px, 0) scale(1.018);
+    }
+    100% {
+        transform: translate3d(-4px, 4px, 0) scale(1.008);
+    }
+}
+
+@keyframes contactArtStarsTwinkleV3 {
+    0%, 100% {
+        opacity: .58;
+    }
+    22% {
+        opacity: .84;
+    }
+    48% {
+        opacity: .67;
+    }
+    71% {
+        opacity: .94;
+    }
+}
+
+/* Let the orbit feel like something the astronaut is
+   actually drifting through rather than a decorative card. */
+.final-contact-orbit {
+    opacity: .72;
+    border-color: rgba(112, 83, 255, .18);
+}
+
+.final-contact-orbit.orbit-b {
+    opacity: .55;
+    border-color: rgba(43, 177, 255, .13);
+}
+
+/* Small independent particle/orb movement. */
+.final-contact-art .final-contact-orb {
+    animation:
+        contactOrbDriftV3 4.8s ease-in-out infinite;
+}
+
+@keyframes contactOrbDriftV3 {
+    0%, 100% {
+        transform: translate3d(0, 3px, 0) scale(1);
+    }
+    50% {
+        transform: translate3d(13px, -16px, 0) scale(1.12);
+    }
+}
+
+/* Keep desktop strictly one viewport tall. */
+@media (min-width: 901px) {
+    .final-contact-page {
+        height: 100svh;
+        min-height: 100svh;
+        max-height: 100svh;
+        overflow: hidden;
+    }
+
+    .final-contact-container {
+        height: calc(100svh - 48px);
+    }
+}
+
+/* Mobile: preserve natural page height. */
+@media (max-width: 900px) {
+    .final-contact-astronaut {
+        width: min(390px, 90%);
+    }
+}
+
+@media (max-width: 650px) {
+    .final-contact-astronaut {
+        width: min(325px, 94%);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .final-contact-astronaut,
+    .final-contact-art-stars,
+    .final-contact-art .final-contact-orb {
+        animation: none;
+    }
+}
+
+
+/* =========================================================
+   FINAL CONTACT V4 — DARK SPACE / NO IMAGE GLOW
+   ========================================================= */
+
+/* Match the image's deep black/navy outer tone with the page. */
+.final-contact-page {
+    background:
+        radial-gradient(
+            ellipse 700px 560px at 24% 50%,
+            rgba(18, 14, 48, .16),
+            transparent 72%
+        ),
+        radial-gradient(
+            ellipse 620px 520px at 78% 48%,
+            rgba(24, 12, 54, .12),
+            transparent 74%
+        ),
+        #020206;
+}
+
+/* Remove the artificial purple halo around the image. */
+.final-contact-art::before {
+    display: none !important;
+}
+
+/* Make the astronaut noticeably smaller and remove external glow. */
+.final-contact-astronaut {
+    width: min(370px, 72%);
+    filter: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    border: 0 !important;
+    mix-blend-mode: normal !important;
+
+    animation: contactAstronautFloatV4 6s ease-in-out infinite;
+    will-change: transform;
+}
+
+@keyframes contactAstronautFloatV4 {
+    0%, 100% {
+        transform: translate3d(0, 7px, 0) rotate(-0.7deg);
+    }
+
+    25% {
+        transform: translate3d(5px, -2px, 0) rotate(0.25deg);
+    }
+
+    50% {
+        transform: translate3d(2px, -13px, 0) rotate(0.7deg);
+    }
+
+    75% {
+        transform: translate3d(-5px, -3px, 0) rotate(0deg);
+    }
+}
+
+/* The space particles should belong to the page, not the image. */
+.final-contact-art-stars {
+    opacity: .65;
+}
+
+/* Keep orbit lines extremely subtle. */
+.final-contact-orbit {
+    opacity: .38;
+    border-color: rgba(105, 91, 190, .13);
+    box-shadow: none;
+}
+
+.final-contact-orbit.orbit-b {
+    opacity: .28;
+    border-color: rgba(65, 145, 190, .10);
+}
+
+/* No glow around the little floating particle either. */
+.final-contact-art .final-contact-orb {
+    box-shadow: none;
+}
+
+/* Desktop — smaller astronaut, more empty space around it. */
+@media (min-width: 901px) {
+    .final-contact-astronaut {
+        width: min(370px, 72%);
+    }
+
+    .final-contact-art {
+        background: transparent !important;
+    }
+
+    .final-contact-page {
+        height: 100svh;
+        min-height: 100svh;
+        max-height: 100svh;
+        overflow: hidden;
+    }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+    .final-contact-astronaut {
+        width: min(330px, 72%);
+    }
+}
+
+/* Mobile */
+@media (max-width: 650px) {
+    .final-contact-astronaut {
+        width: min(285px, 78%);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .final-contact-astronaut {
+        animation: none;
+    }
+}
+
+
+/* =========================================================
+   LAST CONTACT PAGE — PURE BLACK BACKGROUND
+   ========================================================= */
+
+.final-contact-page {
+    background: #000000 !important;
+    background-image: none !important;
+}
+
+.final-contact-page::before,
+.final-contact-page::after {
+    background: none !important;
+    box-shadow: none !important;
+}
+
+/* Keep the space/star elements visible over pure black. */
+.final-contact-stars,
+.final-contact-art-stars {
+    background-color: transparent !important;
+}
+
+/* Remove any artificial glow behind the astronaut. */
+.final-contact-art::before,
+.final-contact-art::after {
+    display: none !important;
+}
+
+
+/* =========================================================
+   FINAL CONTACT PAGE — MATCH ASTRONAUT IMAGE BACKGROUND
+   ========================================================= */
+
+/*
+   The astronaut artwork's outer/background tone is near-black
+   (#010102). Use the same tone for the whole contact page so
+   there is no visible rectangular/color boundary.
+*/
+.final-contact-page {
+    background: #010102 !important;
+    background-image: none !important;
+}
+
+/* Do not add another page-level overlay. */
+.final-contact-page::before,
+.final-contact-page::after {
+    background: none !important;
+    box-shadow: none !important;
+}
+
+/* Artwork area must remain exactly the same background. */
+.final-contact-art {
+    background: #010102 !important;
+    background-image: none !important;
+    box-shadow: none !important;
+}
+
+.final-contact-art::before,
+.final-contact-art::after {
+    display: none !important;
+}
+
+/* Keep the stars floating over the matched background. */
+.final-contact-stars,
+.final-contact-art-stars {
+    background-color: transparent !important;
+}
+
+/* Slightly increase astronaut size from the previous version. */
+.final-contact-astronaut {
+    width: min(410px, 78%) !important;
+    filter: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    border: 0 !important;
+    mix-blend-mode: normal !important;
+
+    animation: contactAstronautFloatMatched 6s ease-in-out infinite;
+    will-change: transform;
+}
+
+@keyframes contactAstronautFloatMatched {
+    0%, 100% {
+        transform: translate3d(0, 7px, 0) rotate(-0.7deg);
+    }
+
+    25% {
+        transform: translate3d(5px, -2px, 0) rotate(0.25deg);
+    }
+
+    50% {
+        transform: translate3d(2px, -13px, 0) rotate(0.7deg);
+    }
+
+    75% {
+        transform: translate3d(-5px, -3px, 0) rotate(0deg);
+    }
+}
+
+/* Keep surrounding space subtle — no artificial purple halo. */
+.final-contact-orbit {
+    opacity: .32;
+    border-color: rgba(105, 91, 190, .10);
+    box-shadow: none !important;
+}
+
+.final-contact-orbit.orbit-b {
+    opacity: .22;
+    border-color: rgba(65, 145, 190, .08);
+}
+
+.final-contact-art .final-contact-orb {
+    box-shadow: none !important;
+}
+
+@media (min-width: 901px) {
+    .final-contact-page {
+        height: 100svh;
+        min-height: 100svh;
+        max-height: 100svh;
+        overflow: hidden;
+    }
+
+    .final-contact-art {
+        background: #010102 !important;
+    }
+
+    .final-contact-astronaut {
+        width: min(410px, 78%) !important;
+    }
+}
+
+@media (max-width: 900px) {
+    .final-contact-astronaut {
+        width: min(360px, 76%) !important;
+    }
+}
+
+@media (max-width: 650px) {
+    .final-contact-astronaut {
+        width: min(310px, 82%) !important;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .final-contact-astronaut {
+        animation: none;
+    }
+}
+
+
+/* =========================================================
+   LAST PAGE — REMOVE COLOR MISMATCH AROUND ASTRONAUT
+   ========================================================= */
+
+/* The black used by the astronaut artwork should continue
+   across the entire last page. */
+.final-contact-page,
+.final-contact-art {
+    background: #000000 !important;
+    background-image: none !important;
+}
+
+/* These old purple atmosphere layers were creating the
+   visible purple patch on the left side. */
+.final-contact-glow,
+.final-contact-glow-left,
+.final-contact-glow-right {
+    display: none !important;
+    background: none !important;
+    box-shadow: none !important;
+}
+
+/* No artificial halo behind the astronaut. */
+.final-contact-art::before,
+.final-contact-art::after {
+    display: none !important;
+    background: none !important;
+    box-shadow: none !important;
+}
+
+/* Keep astronaut a little larger than the previous version. */
+.final-contact-astronaut {
+    width: min(410px, 78%) !important;
+    filter: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    mix-blend-mode: normal !important;
+}
+
+@media (max-width: 900px) {
+    .final-contact-astronaut {
+        width: min(360px, 76%) !important;
+    }
+}
+
+@media (max-width: 650px) {
+    .final-contact-astronaut {
+        width: min(310px, 82%) !important;
+    }
+}
+
+
+/* =========================================================
+   LAST PAGE — SUBTLE FLOATING STAR-DOTS
+   ========================================================= */
+
+/* Keep the overall page exactly as it is.
+   Only the small dots around the astronaut are animated. */
+.final-contact-art-stars {
+    position: absolute !important;
+    inset: -8% !important;
+    pointer-events: none !important;
+    /* Foreground layer: dots visibly float in front of the astronaut. */
+    z-index: 4 !important;
+    mix-blend-mode: screen;
+
+    /* Mostly dots, with a few slightly brighter points so
+       they read like tiny stars without becoming a star field. */
+    background-image:
+        radial-gradient(circle at 8% 18%,
+            rgba(255,255,255,.90) 0 1.1px,
+            transparent 1.8px),
+        radial-gradient(circle at 21% 64%,
+            rgba(180,170,255,.72) 0 .9px,
+            transparent 1.7px),
+        radial-gradient(circle at 35% 30%,
+            rgba(255,255,255,.82) 0 1px,
+            transparent 1.8px),
+        radial-gradient(circle at 51% 73%,
+            rgba(150,225,255,.70) 0 .9px,
+            transparent 1.7px),
+        radial-gradient(circle at 68% 20%,
+            rgba(255,255,255,.88) 0 1.1px,
+            transparent 1.9px),
+        radial-gradient(circle at 84% 58%,
+            rgba(195,185,255,.68) 0 .9px,
+            transparent 1.7px);
+
+    background-size:
+        155px 135px,
+        205px 175px,
+        235px 195px,
+        185px 160px,
+        265px 220px,
+        220px 185px;
+
+    opacity: .72 !important;
+    transform-origin: center center;
+
+    animation:
+        contactArtDotsFloatFinal 10s ease-in-out infinite alternate,
+        contactArtDotsTwinkleFinal 4.8s ease-in-out infinite !important;
+
+    will-change: transform, opacity;
+}
+
+/* Slow drifting movement — enough to notice, but not distracting. */
+@keyframes contactArtDotsFloatFinal {
+    0% {
+        transform: translate3d(-7px, 5px, 0);
+    }
+
+    35% {
+        transform: translate3d(3px, -4px, 0);
+    }
+
+    70% {
+        transform: translate3d(8px, 2px, 0);
+    }
+
+    100% {
+        transform: translate3d(-3px, -7px, 0);
+    }
+}
+
+/* A few dots gently brighten/dim so they feel like distant stars. */
+@keyframes contactArtDotsTwinkleFinal {
+    0%, 100% {
+        opacity: .58;
+    }
+
+    28% {
+        opacity: .76;
+    }
+
+    52% {
+        opacity: .64;
+    }
+
+    78% {
+        opacity: .84;
+    }
+}
+
+/* Make the outer page star layer move independently too. */
+.final-contact-stars {
+    animation:
+        contactOuterDotsFloatFinal 14s ease-in-out infinite alternate,
+        contactOuterDotsTwinkleFinal 6s ease-in-out infinite !important;
+    will-change: transform, opacity;
+}
+
+@keyframes contactOuterDotsFloatFinal {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    50% {
+        transform: translate3d(5px, -4px, 0);
+    }
+
+    100% {
+        transform: translate3d(-4px, 4px, 0);
+    }
+}
+
+@keyframes contactOuterDotsTwinkleFinal {
+    0%, 100% {
+        opacity: .48;
+    }
+
+    35% {
+        opacity: .62;
+    }
+
+    68% {
+        opacity: .52;
+    }
+
+    85% {
+        opacity: .70;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .final-contact-stars,
+    .final-contact-art-stars {
+        animation: none !important;
+    }
+}
+
+
+/* =========================================================
+   REMOVE ROBOT ORBIT RINGS
+   ========================================================= */
+
+.robot-orbits,
+.robot-orbits .orbital,
+.robot-orbits .orbital-1,
+.robot-orbits .orbital-2 {
+    display: none !important;
+}
+
+
+/* =========================================================
+   PROJECTS — AUTO ROTATION + PROJECT DETAILS
+   Final overrides
+   ========================================================= */
+
+/* Keep the LIVE PROJECT badge a little lower without
+   changing the rest of the project layout. */
+.project-floating-tag {
+    transform: translateY(55%);
+}
+
+/* Make the whole project feel selectable. */
+.project-clickable {
+    cursor: pointer;
+}
+
+.project-clickable .project-actions,
+.project-clickable .project-btn,
+.project-clickable a,
+.project-clickable button {
+    cursor: pointer;
+}
+
+.project-details-open {
+    font: inherit;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+/* ---------------------------------------------------------
+   Full-screen project details overlay
+   --------------------------------------------------------- */
+
+.project-details-page {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    display: grid;
+    place-items: center;
+    padding: clamp(18px, 3vw, 42px);
+    background: rgba(1, 5, 7, 0.76);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+        opacity 0.35s ease,
+        visibility 0.35s ease;
+}
+
+.project-details-page.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.project-details-backdrop {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(
+            circle at 18% 28%,
+            rgba(0, 220, 195, 0.08),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 82% 72%,
+            rgba(0, 150, 255, 0.055),
+            transparent 34%
+        ),
+        rgba(1, 5, 7, 0.55);
+}
+
+.project-details-dialog {
+    position: relative;
+    z-index: 2;
+    width: min(1180px, 94vw);
+    max-height: min(860px, 90vh);
+    overflow: auto;
+    padding: clamp(22px, 3vw, 38px);
+    border: 1px solid #1e343b;
+    border-radius: 22px;
+    background:
+        linear-gradient(
+            118deg,
+            rgba(7, 18, 22, 0.98),
+            rgba(2, 9, 12, 0.98)
+        );
+    box-shadow:
+        0 35px 100px rgba(0, 0, 0, 0.62),
+        0 0 60px rgba(0, 220, 195, 0.07);
+    transform: translateY(18px) scale(0.985);
+    transition:
+        transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+    scrollbar-width: thin;
+    scrollbar-color: #28474e transparent;
+}
+
+.project-details-page.is-open .project-details-dialog {
+    transform: translateY(0) scale(1);
+}
+
+.project-details-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 5;
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    border: 1px solid #294047;
+    border-radius: 50%;
+    background: #091419;
+    color: #dce8eb;
+    font-size: 25px;
+    line-height: 1;
+    cursor: pointer;
+    transition:
+        color 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.project-details-close:hover {
+    color: #18dfc5;
+    border-color: #18dfc5;
+    background: #0c1d21;
+    transform: rotate(4deg);
+}
+
+.project-details-topline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding-right: 58px;
+    margin-bottom: 24px;
+}
+
+.project-details-kicker {
+    color: #16dfc4;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.project-details-counter {
+    color: #62747c;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+}
+
+.project-details-layout {
+    display: grid;
+    grid-template-columns: minmax(360px, 0.95fr) minmax(0, 1.05fr);
+    align-items: center;
+    gap: clamp(28px, 4vw, 60px);
+}
+
+.project-details-visual {
+    position: relative;
+    min-width: 0;
+}
+
+.project-details-visual::after {
+    content: "";
+    position: absolute;
+    inset: 12% 8%;
+    z-index: -1;
+    border-radius: 50%;
+    background: rgba(0, 220, 195, 0.10);
+    filter: blur(70px);
+}
+
+.project-details-image-wrap {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #24383f;
+    border-radius: 16px;
+    background: #071013;
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.42),
+        0 0 35px rgba(0, 220, 195, 0.06);
+}
+
+.project-details-image-wrap::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 240, 210, 0.09),
+            transparent 38%,
+            rgba(0, 0, 0, 0.20)
+        );
+}
+
+.project-details-image-wrap img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    display: block;
+    object-fit: cover;
+    opacity: 0.92;
+    filter: saturate(0.82) contrast(1.04);
+}
+
+.project-details-content {
+    min-width: 0;
+}
+
+.project-details-category {
+    display: block;
+    margin-bottom: 10px;
+    color: #16dcc2;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+}
+
+.project-details-content h2 {
+    margin: 0 0 16px;
+    max-width: 700px;
+    color: #f6f9fa;
+    font-size: clamp(32px, 4vw, 54px);
+    font-weight: 800;
+    line-height: 1.02;
+    letter-spacing: -2.2px;
+}
+
+.project-details-description {
+    max-width: 680px;
+    margin: 0 0 24px;
+    color: #9eabb1;
+    font-size: clamp(13px, 1.15vw, 15px);
+    line-height: 1.75;
+}
+
+.project-details-section {
+    margin-top: 20px;
+}
+
+.project-details-section-label {
+    display: block;
+    margin-bottom: 10px;
+    color: #60737b;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.project-details-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.project-details-stack span {
+    padding: 7px 10px;
+    border: 1px solid #263a40;
+    border-radius: 6px;
+    background: #091318;
+    color: #c3cdd1;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px;
+}
+
+.project-details-highlights {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.project-details-highlight {
+    min-width: 0;
+    padding: 11px 12px;
+    border: 1px solid #20343a;
+    border-radius: 9px;
+    background: rgba(7, 15, 18, 0.72);
+}
+
+.project-details-highlight strong {
+    display: block;
+    margin-bottom: 4px;
+    overflow: hidden;
+    color: #e9f1f2;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.project-details-highlight span {
+    color: #63757d;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 7px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+.project-details-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-top: 28px;
+}
+
+.project-details-action {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 0 18px;
+    border: 1px solid #293c42;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.project-details-action:hover {
+    transform: translateY(-2px);
+}
+
+.project-details-action-primary {
+    border-color: transparent;
+    background:
+        linear-gradient(
+            100deg,
+            #08bdf0,
+            #27df75
+        );
+    color: #00110e;
+}
+
+.project-details-action-secondary {
+    background: #0a1115;
+    color: #d9e2e5;
+}
+
+.project-details-action-secondary:hover {
+    border-color: #16d9c1;
+    color: #16d9c1;
+}
+
+.project-details-action span {
+    font-size: 15px;
+    line-height: 1;
+}
+
+body.project-details-open,
+html.project-details-open {
+    overflow: hidden !important;
+}
+
+/* Mobile */
+@media (max-width: 760px) {
+    .project-floating-tag {
+        transform: translateY(35%);
+    }
+
+    .project-details-page {
+        padding: 10px;
+    }
+
+    .project-details-dialog {
+        width: 96vw;
+        max-height: 94vh;
+        padding: 18px;
+        border-radius: 16px;
+    }
+
+    .project-details-close {
+        top: 10px;
+        right: 10px;
+        width: 34px;
+        height: 34px;
+        font-size: 21px;
+    }
+
+    .project-details-topline {
+        margin-bottom: 16px;
+        padding-right: 42px;
+    }
+
+    .project-details-kicker {
+        font-size: 8px;
+        letter-spacing: 2px;
+    }
+
+    .project-details-counter {
+        font-size: 8px;
+    }
+
+    .project-details-layout {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .project-details-content h2 {
+        margin-bottom: 10px;
+        font-size: 30px;
+        letter-spacing: -1px;
+    }
+
+    .project-details-description {
+        margin-bottom: 18px;
+        font-size: 11.5px;
+        line-height: 1.6;
+    }
+
+    .project-details-section {
+        margin-top: 15px;
+    }
+
+    .project-details-stack span {
+        padding: 6px 8px;
+        font-size: 7.5px;
+    }
+
+    .project-details-highlight {
+        padding: 8px 7px;
+    }
+
+    .project-details-highlight strong {
+        font-size: 8px;
+    }
+
+    .project-details-highlight span {
+        font-size: 5.5px;
+    }
+
+    .project-details-actions {
+        margin-top: 20px;
+    }
+
+    .project-details-action {
+        min-height: 38px;
+        padding: 0 12px;
+        gap: 9px;
+        font-size: 9px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .project-details-page,
+    .project-details-dialog,
+    .project-details-close,
+    .project-details-action {
+        transition: none !important;
+    }
+}
+
+
+/* =========================================================
+   PROJECTS — MORE VERTICAL / LESS ULTRA-WIDE LOOK
+   Final override
+   ========================================================= */
+
+/*
+   Keep the same overall section and horizontal slider.
+   Only make the project visual taller so the card feels
+   more balanced vertically.
+*/
+
+.featured-projects-page .project-image-wrap {
+    /*
+       Current image width stays the same.
+       Increasing the max-height gives the image more
+       vertical presence instead of making it look like
+       an extra-wide banner.
+    */
+    max-height: 50vh;
+}
+
+/* Keep the browser frame naturally taller with the image. */
+.featured-projects-page .project-browser {
+    min-height: 0;
+}
+
+/* Give the complete project block a little more vertical room. */
+.featured-projects-page .project-slide-inner {
+    align-items: center;
+}
+
+/* Keep LIVE PROJECT attached to the lower edge. */
+.featured-projects-page .project-floating-tag {
+    transform: translateY(55%);
+}
+
+/* Tablet */
+@media (max-width: 1100px) {
+    .featured-projects-page .project-image-wrap {
+        max-height: 48vh;
+    }
+}
+
+/* Mobile — don't let the project become excessively tall. */
+@media (max-width: 760px) {
+    .featured-projects-page .project-image-wrap {
+        max-height: 46vh;
+    }
+
+    .featured-projects-page .project-floating-tag {
+        transform: translateY(35%);
+    }
+}

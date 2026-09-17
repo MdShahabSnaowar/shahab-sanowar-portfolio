@@ -1,0 +1,9 @@
+{
+  "name": "shahab-two-page-django-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "npx --yes serve . -l 5173",
+    "start": "npx --yes serve . -l 5173"
+  }
+}
