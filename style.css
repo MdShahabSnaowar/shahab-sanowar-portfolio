@@ -7491,7 +7491,6 @@ a {
    FINAL — OPPORTUNITY LIVES INSIDE MY JOURNEY
    ========================================================= */
 
-/* The CTA is now part of the same Journey section. */
 /* =========================================================
    JOURNEY → OPPORTUNITY CTA
    Premium futuristic continuation
@@ -7499,16 +7498,22 @@ a {
 
 .journey-page > .opportunity-page {
     position: relative;
+
+    width: 100%;
     margin: 0;
-    padding: 0 0 42px;
+    padding: 0 0 54px;
 
     overflow: hidden;
 
     background: transparent;
-    isolation: auto;
+    isolation: isolate;
 }
 
-/* Timeline continues directly into CTA */
+
+/* =========================================================
+   TIMELINE CONNECTOR
+   ========================================================= */
+
 .journey-page > .opportunity-page::before {
     content: "";
 
@@ -7518,38 +7523,70 @@ a {
     left: 50%;
 
     width: 2px;
-    height: 34px;
+    height: 38px;
 
     transform: translateX(-50%);
 
     background:
         linear-gradient(
             to bottom,
-            #16e3c2,
-            rgba(22, 227, 194, 0.35)
+            #16e3c2 0%,
+            rgba(22, 227, 194, 0.85) 45%,
+            rgba(22, 227, 194, 0.15) 100%
         );
 
     box-shadow:
-        0 0 10px rgba(22, 227, 194, 0.42),
-        0 0 20px rgba(22, 227, 194, 0.14);
+        0 0 8px rgba(22, 227, 194, 0.7),
+        0 0 18px rgba(22, 227, 194, 0.3);
 
     pointer-events: none;
 
-    z-index: 3;
+    z-index: 5;
 }
 
 
-/* CTA container */
+/* Small glowing node at connector */
+.journey-page > .opportunity-page::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    width: 7px;
+    height: 7px;
+
+    transform: translate(-50%, 0);
+
+    border-radius: 50%;
+
+    background: #16e3c2;
+
+    box-shadow:
+        0 0 0 4px rgba(22, 227, 194, 0.08),
+        0 0 14px rgba(22, 227, 194, 0.8);
+
+    pointer-events: none;
+
+    z-index: 6;
+}
+
+
+/* =========================================================
+   CTA CONTAINER
+   ========================================================= */
+
 .journey-page > .opportunity-page .opportunity-container {
     position: relative;
 
-    z-index: 2;
+    z-index: 3;
 
     width: min(1120px, 90%);
 
     margin: 0 auto;
 
-    padding-top: 34px;
+    padding-top: 38px;
 }
 
 
@@ -7566,67 +7603,46 @@ a {
     align-items: center;
     justify-content: space-between;
 
-    gap: 32px;
+    gap: 42px;
 
-    padding: 30px 40px;
+    padding: 32px 42px;
 
     overflow: hidden;
 
-    border: 1px solid rgba(26, 48, 54, 0.95);
+    border: 1px solid rgba(30, 65, 72, 0.9);
 
-    border-radius: 18px;
+    border-radius: 20px;
 
     background:
         linear-gradient(
-            112deg,
-            rgba(8, 21, 25, 0.98),
-            rgba(3, 11, 15, 0.96)
+            115deg,
+            rgba(7, 20, 24, 0.98),
+            rgba(3, 12, 16, 0.97) 55%,
+            rgba(4, 20, 23, 0.96)
         );
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.025),
-        0 22px 60px rgba(0, 0, 0, 0.24),
-        0 0 45px rgba(16, 219, 194, 0.035);
+        inset 0 1px 0 rgba(255, 255, 255, 0.035),
+        inset 0 0 45px rgba(22, 227, 194, 0.018),
+        0 24px 65px rgba(0, 0, 0, 0.28),
+        0 0 55px rgba(22, 227, 194, 0.045);
 
     transition:
+        transform 0.3s ease,
         border-color 0.3s ease,
-        box-shadow 0.3s ease,
-        transform 0.3s ease;
+        box-shadow 0.3s ease;
 }
 
 
-/* Top futuristic glow */
+/* Top edge glow */
 .journey-page > .opportunity-page .opportunity-content::before {
     content: "";
 
     position: absolute;
 
-    top: -120px;
-    right: 7%;
-
-    width: 330px;
-    height: 220px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(21, 227, 193, 0.10);
-
-    filter: blur(75px);
-
-    pointer-events: none;
-}
-
-
-/* Subtle horizontal tech line */
-.journey-page > .opportunity-page .opportunity-content::after {
-    content: "";
-
-    position: absolute;
-
     top: 0;
-    left: 40px;
-    right: 40px;
+    left: 8%;
+    right: 8%;
 
     height: 1px;
 
@@ -7634,13 +7650,36 @@ a {
         linear-gradient(
             90deg,
             transparent,
-            rgba(22, 227, 194, 0.65),
-            rgba(22, 227, 194, 0.15),
+            rgba(22, 227, 194, 0.75),
+            rgba(22, 227, 194, 0.2),
             transparent
         );
 
     box-shadow:
-        0 0 12px rgba(22, 227, 194, 0.22);
+        0 0 12px rgba(22, 227, 194, 0.28);
+
+    pointer-events: none;
+}
+
+
+/* Right-side ambient glow */
+.journey-page > .opportunity-page .opportunity-content::after {
+    content: "";
+
+    position: absolute;
+
+    width: 340px;
+    height: 220px;
+
+    top: -100px;
+    right: 3%;
+
+    border-radius: 50%;
+
+    background:
+        rgba(22, 227, 194, 0.085);
+
+    filter: blur(75px);
 
     pointer-events: none;
 }
@@ -7648,13 +7687,15 @@ a {
 
 /* Hover */
 .journey-page > .opportunity-page .opportunity-content:hover {
+    transform: translateY(-2px);
+
     border-color:
-        rgba(22, 227, 194, 0.32);
+        rgba(22, 227, 194, 0.35);
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.03),
-        0 26px 70px rgba(0, 0, 0, 0.28),
-        0 0 55px rgba(16, 219, 194, 0.07);
+        inset 0 1px 0 rgba(255, 255, 255, 0.045),
+        0 28px 75px rgba(0, 0, 0, 0.32),
+        0 0 65px rgba(22, 227, 194, 0.085);
 }
 
 
@@ -7665,20 +7706,21 @@ a {
 .journey-page > .opportunity-page .opportunity-copy {
     position: relative;
 
-    z-index: 2;
+    z-index: 4;
 
-    max-width: 700px;
+    max-width: 720px;
 }
 
 
+/* Label */
 .journey-page > .opportunity-page .opportunity-label {
     display: inline-flex;
 
     align-items: center;
 
-    gap: 11px;
+    gap: 12px;
 
-    margin-bottom: 10px;
+    margin-bottom: 11px;
 
     color: #16e3c2;
 
@@ -7695,32 +7737,36 @@ a {
 
 
 .journey-page > .opportunity-page .opportunity-label i {
-    width: 34px;
+    display: block;
+
+    width: 36px;
     height: 1px;
 
     background: #16e3c2;
 
     box-shadow:
-        0 0 10px rgba(22, 227, 194, 0.55);
+        0 0 10px rgba(22, 227, 194, 0.65);
 }
 
 
-/* Main heading */
+/* Heading */
 .journey-page > .opportunity-page .opportunity-copy h2 {
-    max-width: 680px;
+    position: relative;
+
+    max-width: 720px;
 
     margin: 0;
 
     color: #f1f6f7;
 
     font-size:
-        clamp(28px, 2.75vw, 38px);
+        clamp(30px, 3vw, 40px);
 
     font-weight: 800;
 
-    line-height: 1.08;
+    line-height: 1.06;
 
-    letter-spacing: -1.55px;
+    letter-spacing: -1.7px;
 }
 
 
@@ -7730,7 +7776,7 @@ a {
     font-style: normal;
 
     text-shadow:
-        0 0 22px rgba(22, 227, 194, 0.12);
+        0 0 22px rgba(22, 227, 194, 0.14);
 }
 
 
@@ -7738,13 +7784,13 @@ a {
 .journey-page > .opportunity-page .opportunity-copy p {
     max-width: 650px;
 
-    margin: 10px 0 0;
+    margin: 11px 0 0;
 
     color: #82949b;
 
     font-size: 13px;
 
-    line-height: 1.6;
+    line-height: 1.65;
 }
 
 
@@ -7755,25 +7801,30 @@ a {
 .journey-page > .opportunity-page .opportunity-actions {
     position: relative;
 
-    z-index: 2;
+    z-index: 4;
 
     flex-shrink: 0;
 }
 
 
 .journey-page > .opportunity-page .opportunity-button {
+    position: relative;
+
     display: inline-flex;
 
     align-items: center;
     justify-content: center;
 
-    gap: 24px;
+    gap: 25px;
 
-    min-height: 46px;
+    min-width: 175px;
+    min-height: 48px;
 
-    padding: 0 21px;
+    padding: 0 22px;
 
-    border-radius: 9px;
+    overflow: hidden;
+
+    border-radius: 10px;
 
     background:
         linear-gradient(
@@ -7786,14 +7837,53 @@ a {
 
     font-size: 11px;
 
-    font-weight: 750;
+    font-weight: 800;
 
     box-shadow:
-        0 8px 26px rgba(22, 227, 194, 0.12);
+        0 10px 30px rgba(22, 227, 194, 0.14);
 
     transition:
         transform 0.22s ease,
         box-shadow 0.22s ease;
+}
+
+
+/* Button shine */
+.journey-page > .opportunity-page .opportunity-button::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 70%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.25),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    transition: left 0.6s ease;
+}
+
+
+.journey-page > .opportunity-page .opportunity-button:hover::before {
+    left: 140%;
+}
+
+
+.journey-page > .opportunity-page .opportunity-button:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 14px 35px rgba(22, 227, 194, 0.25);
 }
 
 
@@ -7804,16 +7894,8 @@ a {
 }
 
 
-.journey-page > .opportunity-page .opportunity-button:hover {
-    transform: translateY(-3px);
-
-    box-shadow:
-        0 13px 32px rgba(22, 227, 194, 0.22);
-}
-
-
 /* =========================================================
-   HIDE EXTRA CTA BACKGROUND LAYERS
+   HIDE OLD FULL CTA BACKGROUND
    ========================================================= */
 
 .journey-page > .opportunity-page .opportunity-stars,
@@ -7829,19 +7911,21 @@ a {
 @media (max-width: 900px) {
 
     .journey-page > .opportunity-page {
-        padding-bottom: 38px;
+        padding-bottom: 44px;
     }
 
     .journey-page > .opportunity-page::before {
-        height: 28px;
+        height: 32px;
     }
 
     .journey-page > .opportunity-page .opportunity-container {
-        padding-top: 28px;
+        padding-top: 32px;
     }
 
     .journey-page > .opportunity-page .opportunity-content {
-        padding: 25px 30px;
+        padding: 28px 30px;
+
+        gap: 28px;
     }
 }
 
@@ -7853,40 +7937,59 @@ a {
 @media (max-width: 650px) {
 
     .journey-page > .opportunity-page {
-        padding-bottom: 34px;
+        padding-bottom: 36px;
     }
 
 
-    /*
+    /* ============================================
        IMPORTANT:
-       Journey timeline mobile position = 6px.
-       CTA connector MUST use same position.
-    */
+       Mobile Journey timeline is at 50px.
+       Connector MUST use exactly the same X position.
+       ============================================ */
 
     .journey-page > .opportunity-page::before {
-        left: 6px;
+        top: 0;
+
+        left: 50px;
 
         width: 2px;
-
-        height: 22px;
+        height: 34px;
 
         transform: none;
     }
 
 
-    .journey-page > .opportunity-page .opportunity-container {
-        width: 90%;
+    .journey-page > .opportunity-page::after {
+        top: 0;
 
-        padding-top: 22px;
+        left: 50px;
+
+        width: 7px;
+        height: 7px;
+
+        transform: translate(-50%, 0);
     }
 
 
+    .journey-page > .opportunity-page .opportunity-container {
+        width: calc(100% - 74px);
+
+        margin-left: 37px;
+        margin-right: 37px;
+
+        padding-top: 34px;
+    }
+
+
+    /* CTA card */
     .journey-page > .opportunity-page .opportunity-content {
         display: block;
 
-        padding: 22px 20px;
+        padding: 25px 21px;
 
-        border-radius: 14px;
+        border-radius: 16px;
+
+        gap: 0;
     }
 
 
@@ -7894,21 +7997,23 @@ a {
     .journey-page > .opportunity-page .opportunity-copy h2 {
         max-width: 100%;
 
-        font-size: 27px;
+        font-size: 28px;
 
-        line-height: 1.08;
+        line-height: 1.07;
 
-        letter-spacing: -1.1px;
+        letter-spacing: -1.2px;
     }
 
 
     /* Label */
     .journey-page > .opportunity-page .opportunity-label {
-        margin-bottom: 9px;
+        margin-bottom: 10px;
 
         font-size: 8px;
 
         letter-spacing: 2.5px;
+
+        gap: 10px;
     }
 
 
@@ -7919,30 +8024,31 @@ a {
 
     /* Description */
     .journey-page > .opportunity-page .opportunity-copy p {
-        margin-top: 10px;
+        margin-top: 11px;
 
         font-size: 11px;
 
-        line-height: 1.6;
+        line-height: 1.65;
     }
 
 
     /* Button */
     .journey-page > .opportunity-page .opportunity-actions {
-        margin-top: 20px;
+        margin-top: 22px;
     }
 
 
     .journey-page > .opportunity-page .opportunity-button {
         width: auto;
 
-        min-height: 46px;
+        min-width: 0;
+        min-height: 48px;
 
-        padding: 0 20px;
+        padding: 0 21px;
 
-        gap: 24px;
+        gap: 25px;
 
-        border-radius: 9px;
+        border-radius: 10px;
 
         font-size: 10px;
     }
@@ -7953,18 +8059,17 @@ a {
     }
 
 
-    /* Keep top glow subtle on small screen */
-    .journey-page > .opportunity-page .opportunity-content::before {
-        top: -100px;
+    /* Mobile glow */
+    .journey-page > .opportunity-page .opportunity-content::after {
+        width: 250px;
+        height: 180px;
 
-        right: -80px;
-
-        width: 260px;
-        height: 190px;
+        top: -90px;
+        right: -90px;
     }
 
 
-    .journey-page > .opportunity-page .opportunity-content::after {
+    .journey-page > .opportunity-page .opportunity-content::before {
         left: 20px;
         right: 20px;
     }
