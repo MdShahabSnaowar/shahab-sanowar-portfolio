@@ -1,6 +1,5 @@
 import os
-import smtplib
-from email.message import EmailMessage
+import requests
 from datetime import datetime, timezone
 
 from dotenv import load_dotenv
@@ -15,33 +14,48 @@ app = Flask(__name__)
 # For production, replace "*" with your exact portfolio domain.
 CORS(app, resources={r"/api/*": {"origins": "*"}})
 
-SMTP_HOST = os.getenv("SMTP_HOST", "smtp.gmail.com")
-SMTP_PORT = int(os.getenv("SMTP_PORT", "587"))
+BREVO_API_KEY = os.getenv("BREVO_API_KEY", "").strip()
 EMAIL_USERNAME = os.getenv("EMAIL_USERNAME", "").strip()
-EMAIL_APP_PASSWORD = os.getenv("EMAIL_APP_PASSWORD", "").strip()
+EMAIL_FROM_NAME = os.getenv("EMAIL_FROM_NAME", "Shahab Sanowar").strip()
 OWNER_EMAIL = os.getenv("OWNER_EMAIL", EMAIL_USERNAME).strip()
 
 REQUIRED_FIELDS = ("name", "email", "service")
 
 
 def send_email(to_email, subject, text_body, reply_to=None):
-    if not EMAIL_USERNAME or not EMAIL_APP_PASSWORD:
-        raise RuntimeError("Email credentials are missing in .env")
+    if not BREVO_API_KEY or not EMAIL_USERNAME:
+        raise RuntimeError("Brevo email configuration is missing")
 
-    msg = EmailMessage()
-    msg["From"] = EMAIL_USERNAME
-    msg["To"] = to_email
-    msg["Subject"] = subject
+    payload = {
+        "sender": {
+            "name": EMAIL_FROM_NAME,
+            "email": EMAIL_USERNAME,
+        },
+        "to": [
+            {"email": to_email}
+        ],
+        "subject": subject,
+        "textContent": text_body,
+    }
 
     if reply_to:
-        msg["Reply-To"] = reply_to
+        payload["replyTo"] = {"email": reply_to}
 
-    msg.set_content(text_body)
+    response = requests.post(
+        "https://api.brevo.com/v3/smtp/email",
+        headers={
+            "accept": "application/json",
+            "api-key": BREVO_API_KEY,
+            "content-type": "application/json",
+        },
+        json=payload,
+        timeout=30,
+    )
 
-    with smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=30) as server:
-        server.starttls()
-        server.login(EMAIL_USERNAME, EMAIL_APP_PASSWORD)
-        server.send_message(msg)
+    if not response.ok:
+        raise RuntimeError(
+            f"Brevo API error {response.status_code}: {response.text[:500]}"
+        )
 
 
 @app.get("/api/health")
@@ -118,7 +132,7 @@ Backend Developer | Python & Django
 """
 
     try:
-        # Send both emails from the server using the Gmail App Password.
+        # Send both emails through Brevo over HTTPS.
         send_email(
             OWNER_EMAIL,
             owner_subject,
@@ -138,7 +152,7 @@ Backend Developer | Python & Django
         })
 
     except Exception as exc:
-        # Do not expose SMTP credentials or internal details to the browser.
+        # Do not expose Brevo API credentials or internal details to the browser.
         app.logger.exception("Portfolio contact email failed: %s", exc)
         return jsonify({
             "ok": False,
