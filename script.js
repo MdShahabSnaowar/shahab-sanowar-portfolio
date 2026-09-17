@@ -3055,7 +3055,7 @@ window.addEventListener(
 
                 const response =
                     await fetch(
-                        "http://127.0.0.1:5000/api/contact",
+                        "https://shahab-sanowar-portfolio-api.onrender.com/api/contact",
                         {
                             method: "POST",
 
