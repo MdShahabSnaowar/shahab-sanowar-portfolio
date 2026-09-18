@@ -6075,17 +6075,25 @@ a {
     }
 
     .journey-timeline {
-        padding-left: 23px;
+        padding-left: 0;
     }
 
     .journey-timeline::before {
         left: 6px;
-        transform: none;
+        width: 1px;
+        transform: translateX(-50%);
+        background: linear-gradient(
+            to bottom,
+            transparent,
+            rgba(22, 227, 194, 0.28) 40px,
+            rgba(22, 227, 194, 0.28) 100%
+        );
     }
 
     .journey-timeline::after {
         left: 6px;
-        transform: none;
+        width: 2px;
+        transform: translateX(-50%);
     }
 
     .journey-item {
@@ -6096,8 +6104,13 @@ a {
 
     .journey-item-left .journey-card,
     .journey-item-right .journey-card {
-        margin: 0;
+        margin: 0 0 0 23px;
         transform: translateY(24px) scale(0.98);
+    }
+
+    .journey-item-left .journey-card:hover,
+    .journey-item-right .journey-card:hover {
+        transform: none;
     }
 
     .journey-card.journey-visible {
@@ -6105,15 +6118,15 @@ a {
     }
 
     .journey-dot {
-        top: 29px;
-        left: 0;
+        top: 30px;
+        left: 6px;
         width: 13px;
         height: 13px;
-        transform: translateX(-50%);
+        transform: translate(-50%, -50%);
     }
 
     .journey-item.journey-active .journey-dot {
-        transform: translateX(-50%) scale(1.08);
+        transform: translate(-50%, -50%) scale(1.08);
     }
 
     .journey-card {
@@ -6124,9 +6137,12 @@ a {
     .journey-card::before,
     .journey-item-left .journey-card::before,
     .journey-item-right .journey-card::before {
-        left: -23px;
+        top: 30px;
+        left: -17px;
         right: auto;
-        width: 23px;
+        width: 17px;
+        height: 1px;
+        transform: translateY(-50%);
     }
 
     .journey-card-top {
@@ -7942,42 +7958,40 @@ a {
 
 
     /* ============================================
-       IMPORTANT:
-       Mobile Journey timeline is at 50px.
-       Connector MUST use exactly the same X position.
+       Seamless continuation from mobile Journey vertical
+       timeline + horizontal branch to Opportunity card
        ============================================ */
 
     .journey-page > .opportunity-page::before {
-        top: 0;
-
-        left: 50px;
-
-        width: 2px;
-        height: 34px;
-
-        transform: none;
+        content: "";
+        position: absolute;
+        top: -1px;
+        left: calc(5% + 6px);
+        width: 17px;
+        height: 63px;
+        transform: translateX(-0.5px);
+        background: transparent;
+        border-left: 1px solid rgba(22, 227, 194, 0.45);
+        border-bottom: 1px solid rgba(22, 227, 194, 0.45);
+        border-bottom-left-radius: 8px;
+        box-shadow: -1px 1px 10px rgba(22, 227, 194, 0.25);
+        pointer-events: none;
+        z-index: 5;
     }
 
 
+    /* Remove floating endpoint dot */
     .journey-page > .opportunity-page::after {
-        top: 0;
-
-        left: 50px;
-
-        width: 7px;
-        height: 7px;
-
-        transform: translate(-50%, 0);
+        display: none;
     }
 
 
     .journey-page > .opportunity-page .opportunity-container {
-        width: calc(100% - 74px);
-
-        margin-left: 37px;
-        margin-right: 37px;
-
+        width: 90%;
+        margin: 0 auto;
         padding-top: 34px;
+        padding-left: 23px;
+        box-sizing: border-box;
     }
 
 
