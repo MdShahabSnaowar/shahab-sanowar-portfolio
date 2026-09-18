@@ -4052,3 +4052,47 @@ document
     );
 
 })();
+
+
+
+/* ==========================================================
+   EMAIL LINK — MOBILE + DESKTOP
+   Mobile: native mail app
+   Desktop: Gmail compose window
+   ========================================================== */
+
+(function initEmailLink() {
+    const emailLink =
+        document.getElementById("email-link");
+
+    if (!emailLink) {
+        return;
+    }
+
+    emailLink.addEventListener("click", function (event) {
+        const isMobile =
+            /Android|iPhone|iPad|iPod/i.test(
+                navigator.userAgent
+            );
+
+        if (isMobile) {
+            // Keep native mail app behavior on mobile
+            return;
+        }
+
+        // Open Gmail compose on desktop/web
+        event.preventDefault();
+
+        const gmailUrl =
+            "https://mail.google.com/mail/?view=cm&fs=1&to=" +
+            encodeURIComponent(
+                "shahabsanowar786@gmail.com"
+            );
+
+        window.open(
+            gmailUrl,
+            "_blank",
+            "noopener,noreferrer"
+        );
+    });
+})();
