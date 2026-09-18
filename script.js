@@ -2,7 +2,7 @@ const lines = [
     { text: "$ git init && git add .", type: "command" },
     { text: "$ git present --portfolio=\"Shahab\"", type: "command" },
     { text: "⏳ compiling...", type: "compiling" },
-    { text: "localhost:5173 — ready", type: "url" }
+    { text: "portfolio — online & ready", type: "url" }
 ];
 
 const cli = document.getElementById("cli");
